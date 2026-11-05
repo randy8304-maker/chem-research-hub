@@ -3,47 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>鋰離子電池電極介面與高容量材料發展趨勢 | ChemMate</title>
-    <!-- 引入 KaTeX 以支援數學與化學方程式渲染 -->
+    <meta name="description" content="鋰離子電池 SEI/CEI、Butler–Volmer 動力學、EIS 判讀與矽基負極設計的研究筆記。">
+    <title>鋰離子電池電極介面與高容量材料 | ChemMate</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #fdfbf7; color: #2c3e50; max-width: 750px; margin: 0 auto; padding: 40px 20px; line-height: 1.8; }
-        a { color: #5c768d; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .back-link { margin-bottom: 20px; display: inline-block; font-weight: bold; }
-        h1 { color: #2c3e50; border-bottom: 2px solid #e0dcd0; padding-bottom: 10px; font-size: 1.8em; }
-        .meta { color: #888; font-size: 0.9em; margin-bottom: 30px; }
-        h2 { margin-top: 35px; color: #34495e; border-left: 4px solid #5c768d; padding-left: 10px; }
-        .formula-box { background: #fff; border: 1px solid #e0dcd0; padding: 15px; border-radius: 6px; margin: 20px 0; text-align: center; }
+        :root { --bg:#fdfbf7; --ink:#2c3e50; --muted:#65717a; --blue:#5c768d; --green:#688575; --line:#e5dfd4; --paper:#fff; --sand:#f3efe7; }
+        * { box-sizing:border-box; }
+        body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC",sans-serif; max-width:900px; padding:30px 22px 60px; margin-inline:auto; line-height:1.85; }
+        a { color:var(--blue); } .back-link { display:inline-block; margin:0 0 22px; font-weight:700; text-decoration:none; }
+        .eyebrow { color:var(--green); letter-spacing:.12em; font-size:.8rem; font-weight:700; text-transform:uppercase; }
+        h1 { margin:7px 0 10px; padding-bottom:15px; border-bottom:2px solid var(--line); font-size:clamp(1.8rem,4vw,2.45rem); line-height:1.35; }
+        .meta { color:#858b8c; font-size:.9rem; } .lede { color:var(--muted); font-size:1.08rem; }
+        .tags { display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 24px; } .tag { display:inline-block; background:#e9efeb; color:#4d6c5c; padding:3px 10px; border-radius:999px; font-size:.82rem; }
+        .summary { background:#fff; border:1px solid var(--line); border-left:5px solid var(--green); border-radius:10px; padding:18px 22px; margin:25px 0; }
+        .summary strong { display:block; margin-bottom:5px; } .summary p { margin:0; color:var(--muted); }
+        nav.toc { background:#f3f0e9; border-radius:10px; padding:16px 20px; margin:26px 0; } nav.toc strong { display:block; margin-bottom:6px; } nav.toc ul { margin:0; padding-left:1.2rem; columns:2; } nav.toc a { text-decoration:none; }
+        h2 { margin:38px 0 12px; padding-left:12px; border-left:4px solid var(--blue); color:#34495e; font-size:1.35rem; }
+        h3 { margin:23px 0 8px; font-size:1.08rem; } p { margin:10px 0 14px; } .formula-box { overflow-x:auto; text-align:center; background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:18px 12px; margin:18px 0; }
+        .note { background:#eef2ef; border-radius:8px; padding:13px 16px; color:#4d6258; margin:18px 0; }
+        table { width:100%; border-collapse:collapse; margin:18px 0 24px; background:#fff; font-size:.94rem; } th,td { border:1px solid var(--line); padding:11px 12px; text-align:left; vertical-align:top; } th { background:#edf1ee; color:#3e5b4e; }
+        .reference-list li { margin:9px 0; overflow-wrap:anywhere; } .footnote { color:#858b8c; font-size:.88rem; border-top:1px solid var(--line); margin-top:36px; padding-top:18px; }
+        @media(max-width:650px) { body { padding:22px 16px 42px; } nav.toc ul { columns:1; } table { display:block; overflow-x:auto; white-space:normal; } }
     </style>
 </head>
 <body>
-
-    <a href="../index.html" class="back-link">← 返回首頁總覽</a>
-
+    <a href="../index.html" class="back-link">← 回到研究手帳</a>
     <header>
+        <div class="eyebrow">Electrochemistry · Battery Interfaces</div>
         <h1>鋰離子電池電極介面與高容量材料發展趨勢</h1>
-        <div class="meta">發布日期：2026-11-06 | 分類：電化學 / 電池材料</div>
+        <div class="meta">研究筆記｜更新日期：2026-11-06｜主題：電化學 / 電池材料</div>
+        <p class="lede">容量提升不只取決於活性材料本身。離子如何穿過界面、電子如何維持連通，以及界面膜能否在反覆體積變化中保持穩定，會共同決定電池的可用容量、倍率與壽命。</p>
+        <div class="tags"><span class="tag">SEI / CEI</span><span class="tag">Butler–Volmer</span><span class="tag">EIS</span><span class="tag">矽基負極</span></div>
     </header>
+    <aside class="summary"><strong>本篇摘要</strong><p>以電極—電解液界面為主線，說明 SEI 與 CEI 的形成意義、矽負極的膨脹與失效連鎖、Butler–Volmer 方程式及 EIS 的常見頻段訊號。阻抗圖形需要結合狀態、溫度、電極結構與等效電路檢查，不能將單一半圓直接等同於某一個材料性質。</p></aside>
+    <nav class="toc" aria-label="目錄"><strong>閱讀導覽</strong><ul><li><a href="#context">電池與介面角色</a></li><li><a href="#materials">高容量材料的取捨</a></li><li><a href="#kinetics">界面動力學</a></li><li><a href="#eis">EIS 判讀框架</a></li><li><a href="#workflow">研究與驗證流程</a></li><li><a href="#design">設計策略與結論</a></li></ul></nav>
 
     <main>
-        <h2>1. 研究背景與目的</h2>
-        <p>在當前高能量密度儲能系統的開發中，傳統石墨負極的理論容量已逐漸逼近極限。為了進一步提升鋰離子電池的性能，發展高比容量的矽基負極或新型過渡金屬氧化物正極成為關鍵研究方向。然而，材料在充放電過程中的體積膨脹與嚴重的<strong>固體電解質界面膜（SEI, Solid Electrolyte Interphase）</strong>不穩定問題，是目前亟需解決的核心障礙。</p>
+        <section id="context">
+            <h2>1. 研究背景：界面是反應與傳輸的交會處</h2>
+            <p>鋰離子電池充電時，鋰離子由正極脫出，穿過電解液並嵌入負極；放電時方向相反。電子則經由外部電路移動。實際電池表現受多個串聯步驟限制，包括電解液中的離子傳輸、界面電荷轉移、固相擴散，以及電子導電網路與集流體接觸。</p>
+            <p>負極電位較低，電解液可能在初次充電時還原並形成<strong>固體電解質界面膜（SEI, solid electrolyte interphase）</strong>。理想 SEI 能阻擋電子繼續流向電解液，同時允許 Li<sup>+</sup> 通過，因此可鈍化表面、降低後續副反應。正極高電位下形成或改變的界面層常稱為<strong>正極電解質界面膜（CEI, cathode electrolyte interphase）</strong>。兩者的化學組成、形成電位與失效模式並不相同。</p>
+            <div class="note"><strong>界面穩定的兩面性：</strong>界面膜需要足夠緻密以減少持續分解，又必須薄且具離子導通性；過厚或不均勻會增加阻抗，反覆破裂則會暴露新表面並消耗可循環鋰與電解液。</div>
+        </section>
 
-        <h2>2. 電化學動力學與界面反應</h2>
-        <p>在電極與電解液的交界面處，電荷轉移阻抗（Charge Transfer Resistance）直接決定了電池的倍率性能。其動力學過程可用 Butler-Volmer 方程式進行描述：</p>
-        
-        <div class="formula-box">
-            $$i = i_0 \left[ \exp\left(\frac{\alpha_a F \eta}{RT}\right) - \exp\left(-\frac{\alpha_c F \eta}{RT}\right) \right]$$
-        </div>
+        <section id="materials">
+            <h2>2. 高容量材料：容量提升伴隨新的失效模式</h2>
+            <h3>矽基負極：高儲鋰能力與力學代價</h3>
+            <p>矽透過與鋰合金化儲存鋰，理論上具有高於石墨的比容量潛力；然而，深度鋰化時的顯著體積變化會造成顆粒裂解、電極厚度膨脹與導電網路失聯。新生表面又會持續消耗電解液並形成新的 SEI，使首圈不可逆容量增加，循環庫倫效率及壽命受到影響。</p>
+            <p>一種結構設計方向是讓膨脹朝向預留的內部空間，而非向外擠壓。階層式多孔矽奈米球的原始研究展示了中空核心與多孔殼層如何容納鋰化造成的形變，並維持較穩定的 SEI 與傳輸路徑。這是特定材料架構的示範，不能直接推論所有多孔矽都會得到相同的循環結果。</p>
+            <h3>正極與全電池設計</h3>
+            <p>正極可從層狀氧化物、尖晶石或橄欖石型磷酸鹽等材料家族選擇；不同材料在工作電位、可逆容量、熱穩定性、成本與界面副反應之間存在取捨。實際能量密度還受負極／正極容量配比、電極面載量、集流體、電解液用量及封裝等因素影響。半電池中的高比容量不等於全電池層級的高能量密度。</p>
+        </section>
 
-        <p>透過電化学阻抗譜（EIS, Electrochemical Impedance Spectroscopy）分析，可以有效評估改質前後電極介面的安定性及鋰離子擴散係數。</p>
+        <section id="kinetics">
+            <h2>3. 界面動力學：Butler–Volmer 方程式</h2>
+            <p>在忽略傳質限制、且可用單一界面反應描述的近似下，Butler–Volmer 關係連結電流密度與過電位：</p>
+            <div class="formula-box">$$i = i_0\left[\exp\left(\frac{\alpha_a nF\eta}{RT}\right)-\exp\left(-\frac{\alpha_c nF\eta}{RT}\right)\right]$$</div>
+            <p>其中 $i$ 為反應電流密度，$i_0$ 為交換電流密度，$\eta$ 為相對平衡電位的過電位，$\alpha_a$ 與 $\alpha_c$ 為陽極、陰極轉移係數，$n$ 為反應電子數，$F$、$R$、$T$ 分別代表法拉第常數、氣體常數與絕對溫度。正負號依所採電流與過電位慣例而定，使用時應明確註明。</p>
+            <p>在小過電位且採用上述對稱寫法時，方程式可線性化，得到近似電荷轉移電阻與交換電流的關係：</p>
+            <div class="formula-box">$$R_{ct} \approx \frac{RT}{nF i_0}$$</div>
+            <p>這裡的 $R_{ct}$ 是依電流密度定義的面積比電阻形式；若使用總電流，需將電化學活性面積納入。多孔電極中可用活性面積、局部濃度與表面狀態並非固定，因此擬合得到的阻值是特定測試條件下的表觀參數。</p>
+        </section>
 
-        <h2>3. 未來展望</h2>
-        <p>結合先進的生成式 AI 與 Agent 自動化分析工具，未來能更快速地從海量文獻中篩選出最佳的電極表面包覆材料與配方，加速實驗迭代與新材料開發時程。</p>
+        <section id="eis">
+            <h2>4. 電化學阻抗譜：從訊號到可檢驗的解讀</h2>
+            <p>EIS 在小振幅交流擾動下量測系統對不同頻率的響應。Nyquist 圖常以實部 $Z'$ 為橫軸、負虛部 $-Z''$ 為縱軸；Bode 圖則呈現阻抗大小與相位角隨頻率的變化。可先用下表建立工作假說，再用其他量測驗證。</p>
+            <table><thead><tr><th>常見頻段 / 圖形</th><th>可能的主要貢獻</th><th>判讀時要問</th></tr></thead><tbody>
+                <tr><td>高頻截距</td><td>電解液、集流體、接點與導線等歐姆項的合成</td><td>測試夾具、電池壓接與溫度是否一致？</td></tr>
+                <tr><td>中高頻弧</td><td>表面膜、接觸或界面過程可能共同貢獻</td><td>弧是否重疊？是否有獨立的膜層或參考電極證據？</td></tr>
+                <tr><td>中低頻弧</td><td>常以電荷轉移與雙電層響應描述，但會受多孔結構與分布時間常數影響</td><td>等效電路是否能解釋完整頻譜，且參數是否可辨識？</td></tr>
+                <tr><td>低頻斜線或尾端</td><td>有限／半無限擴散、濃度極化與幾何效應</td><td>頻率範圍是否足夠？是否符合所用 Warburg 模型假設？</td></tr>
+            </tbody></table>
+            <div class="note"><strong>避免過度解讀：</strong>一個 Nyquist 半圓不必然只代表 SEI 或只代表電荷轉移。不同過程可能重疊；等效電路只是對資料的模型化，不是直接拍到的實體結構。最好報告電池狀態（SOC）、溫度、靜置時間、擾動振幅、頻率範圍、擬合電路與殘差，並搭配循環、倍率、GITT/PITT、XPS 或顯微分析交叉判斷。</div>
+        </section>
+
+        <section id="workflow">
+            <h2>5. 建議的研究與驗證流程</h2>
+            <ol>
+                <li><strong>定義比較問題：</strong>例如要判斷表面包覆是否減緩界面阻抗成長，而非只比較一次初始容量。</li>
+                <li><strong>控制電極與電池條件：</strong>記錄活性物質比例、面載量、壓實密度、電解液量、N/P 配比、形成程序與測試溫度。</li>
+                <li><strong>建立電化學基線：</strong>至少比較首圈效率、容量保持率、庫倫效率、倍率性能與不同 SOC 的 EIS。</li>
+                <li><strong>追蹤界面變化：</strong>在相同循環狀態下採用 XPS/ToF-SIMS 分析表面化學，並以 SEM/TEM 檢查裂紋、顆粒與電極厚度變化。</li>
+                <li><strong>交叉驗證假說：</strong>若 EIS 顯示阻抗降低，需確認是否來自更快界面反應、較大活性面積或不同接觸狀態，避免將單一擬合參數當作唯一證據。</li>
+            </ol>
+        </section>
+
+        <section id="design">
+            <h2>6. 設計策略與結論</h2>
+            <table><thead><tr><th>觀察到的瓶頸</th><th>可測試的設計方向</th><th>必要的對照</th></tr></thead><tbody>
+                <tr><td>矽負極循環後阻抗與厚度持續上升</td><td>粒徑／孔隙設計、彈性黏結劑、導電骨架或穩定界面添加劑</td><td>首圈效率、電極膨脹、面載量與循環後界面分析</td></tr>
+                <tr><td>倍率性能差且低頻極化明顯</td><td>縮短固相擴散路徑、調整顆粒與孔隙、優化電解液浸潤</td><td>不同倍率、SOC 與溫度下的阻抗及脈衝測試</td></tr>
+                <tr><td>高電位循環出現副反應或阻抗增加</td><td>正極表面包覆、電解液配方與 CEI 調控</td><td>電壓窗口、氣體／副產物、正極表面化學與全電池驗證</td></tr>
+            </tbody></table>
+            <p>有效的高容量電極設計需要同步處理材料本徵容量、界面化學、力學穩定、離子與電子傳輸，以及可製造性。對研究者而言，最有說服力的結論不是「阻抗變小」或「容量變高」單一數字，而是建立一條由材料結構、界面演變到電池性能的可驗證因果鏈。</p>
+        </section>
+
+        <section>
+            <h2>延伸閱讀與原始研究</h2>
+            <ol class="reference-list">
+                <li>Y. Liu et al., “Inward lithium-ion breathing of hierarchically porous silicon anodes,” <em>Nature Communications</em> (2015). <a href="https://www.nature.com/articles/ncomms9844" target="_blank" rel="noopener noreferrer">閱讀原文</a></li>
+                <li>T. L. Kirk et al., “Nonlinear Electrochemical Impedance Spectroscopy for Lithium-Ion Battery Model Parameterization,” <em>Journal of The Electrochemical Society</em> 170 (2023), 010514. <a href="https://doi.org/10.1149/1945-7111/acada7" target="_blank" rel="noopener noreferrer">閱讀原文</a></li>
+                <li>“Extracting and Interpreting Electrochemical Impedance Spectra from Physics-Based Models of Lithium-Ion Batteries,” <em>Journal of The Electrochemical Society</em>. <a href="https://doi.org/10.1149/1945-7111/ad4399" target="_blank" rel="noopener noreferrer">閱讀原文</a></li>
+            </ol>
+        </section>
     </main>
-
+    <p class="footnote">本頁為研究導讀與機制整理，不代表特定電池的測試結果。方程式與阻抗模型的適用範圍應依材料系統、SOC、溫度與量測設計確認。</p>
 </body>
 </html>

@@ -3,105 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ChemMate Research Hub 化學與材料工程研究筆記：電化學、電池電極與光催化塑膠資源化。">
     <title>ChemMate Research Hub | 化工與材料學術知識庫</title>
     <style>
-        :root {
-            --bg-color: #fdfbf7;
-            --text-color: #2c3e50;
-            --card-bg: #ffffff;
-            --accent-color: #5c768d;
-            --border-color: #e0dcd0;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            line-height: 1.7;
-        }
-        header {
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-        }
-        h1 {
-            color: var(--accent-color);
-            font-size: 2em;
-            margin-bottom: 10px;
-        }
-        .subtitle {
-            color: #666;
-            font-size: 1.05em;
-        }
-        .section-title {
-            margin-top: 40px;
-            margin-bottom: 20px;
-            font-size: 1.4em;
-            border-left: 4px solid var(--accent-color);
-            padding-left: 10px;
-        }
-        .post-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 16px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .post-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-        }
-        .post-date {
-            font-size: 0.85em;
-            color: #888;
-            margin-bottom: 6px;
-        }
-        .post-card h3 {
-            margin: 0 0 10px 0;
-        }
-        .post-card a {
-            color: #2c3e50;
-            text-decoration: none;
-        }
-        .post-card a:hover {
-            color: #5c768d;
-            text-decoration: underline;
-        }
-        .tag {
-            display: inline-block;
-            background: #f0ede6;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.8em;
-            color: #555;
-            margin-right: 6px;
-        }
+        :root { --bg:#fdfbf7; --ink:#2c3e50; --muted:#68747d; --paper:#fff; --blue:#5c768d; --green:#6f8a79; --line:#e7e1d6; --sand:#f2eee6; }
+        * { box-sizing:border-box; }
+        body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC",sans-serif; line-height:1.75; }
+        .shell { width:min(100% - 40px, 980px); margin:0 auto; }
+        .hero { padding:64px 0 42px; border-bottom:1px solid var(--line); }
+        .eyebrow { color:var(--green); font-size:.82rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+        h1 { margin:8px 0 10px; color:var(--blue); font-size:clamp(2rem,5vw,3rem); line-height:1.2; }
+        .hero p { max-width:680px; margin:0; color:var(--muted); font-size:1.08rem; }
+        .topic-row { display:flex; flex-wrap:wrap; gap:9px; margin-top:22px; }
+        .topic { background:#e9efeb; color:#4b6b5c; padding:5px 12px; border-radius:999px; font-size:.86rem; }
+        main { padding:34px 0 60px; }
+        .intro { display:grid; grid-template-columns:1.2fr .8fr; gap:24px; margin-bottom:38px; }
+        .intro-card,.post-card { background:var(--paper); border:1px solid var(--line); border-radius:14px; box-shadow:0 5px 18px rgba(57,64,69,.035); }
+        .intro-card { padding:22px 24px; }
+        .intro-card h2,.section-heading { margin:0 0 10px; font-size:1.18rem; }
+        .intro-card p { margin:0; color:var(--muted); }
+        .reading-guide { background:#f5f2eb; }
+        .reading-guide ul { margin:8px 0 0; padding-left:1.2rem; color:var(--muted); }
+        .section-heading { margin:0 0 18px; padding-left:12px; border-left:4px solid var(--blue); font-size:1.45rem; }
+        .post-card { padding:24px; margin-bottom:18px; transition:transform .2s ease,box-shadow .2s ease; }
+        .post-card:hover { transform:translateY(-2px); box-shadow:0 10px 26px rgba(57,64,69,.08); }
+        .card-top { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:8px; }
+        .post-date,.reading-time { color:#8a8c89; font-size:.84rem; }
+        .tags { display:flex; flex-wrap:wrap; gap:7px; margin:0 0 10px; }
+        .tag { display:inline-block; background:var(--sand); color:#58636b; padding:3px 9px; border-radius:5px; font-size:.8rem; }
+        .post-card h3 { margin:0 0 8px; font-size:1.28rem; line-height:1.45; }
+        .post-card h3 a { color:var(--ink); text-decoration:none; }
+        .post-card h3 a:hover { color:var(--blue); text-decoration:underline; }
+        .post-card p { margin:0; color:var(--muted); }
+        .takeaways { display:flex; flex-wrap:wrap; gap:8px 18px; margin:15px 0 0; padding:13px 0 0; border-top:1px solid #f0ece4; list-style:none; color:#53615e; font-size:.9rem; }
+        .takeaways li::before { content:"•"; color:var(--green); margin-right:7px; }
+        .read-link { display:inline-block; margin-top:14px; color:var(--blue); font-weight:700; text-decoration:none; }
+        .read-link:hover { text-decoration:underline; }
+        footer { border-top:1px solid var(--line); padding:20px 0 32px; color:#898c8b; font-size:.84rem; }
+        @media (max-width:700px) { .shell { width:min(100% - 30px, 980px); } .hero { padding:42px 0 30px; } .intro { grid-template-columns:1fr; gap:14px; } .post-card { padding:19px; } .card-top { align-items:flex-start; flex-direction:column; gap:2px; } }
+        @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto !important; transition:none !important; } }
     </style>
 </head>
 <body>
-
-    <header>
-        <h1>🧪 ChemMate Research Hub</h1>
-        <p class="subtitle">個人化學與材料工程學術筆記庫 —— 紀錄電化學、電池電極材料與光催化技術研究。</p>
-    </header>
-
-    <main>
-        <h2 class="section-title">最新研究筆記</h2>
-        
-        <div id="article-list">
-            <!-- 這裡未來會由 AI 根據 AGENTS.md 自動新增文章卡片 -->
-            <div class="post-card">
-                <div class="post-date">2026-11-06</div>
-                <span class="tag">電化學</span><span class="tag">電池材料</span>
-                <h3><a href="notes/battery-intro.html">鋰離子電池電極介面與高容量材料發展趨勢筆記</a></h3>
-                <p>探討新型電池電極材料的表面改質技術，以及在充放電循環中的電化學阻抗分析與界面行為。</p>
+    <header class="hero">
+        <div class="shell">
+            <div class="eyebrow">ChemMate · Research Notes</div>
+            <h1>化學與材料研究手帳</h1>
+            <p>以清楚的機制圖像、可追溯的文獻與實驗判讀，整理電化學、電池材料與光催化資源化研究。</p>
+            <div class="topic-row" aria-label="研究主題">
+                <span class="topic">電化學與界面</span><span class="topic">鋰離子電池</span><span class="topic">光催化塑膠回收</span><span class="topic">綠色化工</span>
             </div>
         </div>
+    </header>
+    <main class="shell">
+        <section class="intro" aria-label="知識庫介紹">
+            <div class="intro-card">
+                <h2>關於這本研究手帳</h2>
+                <p>這裡收錄研究背景、材料設計、反應機制、常用表徵與解讀限制。每篇筆記將概念與可觀察的實驗訊號連結，並附上延伸閱讀，方便從問題回到原始研究。</p>
+            </div>
+            <aside class="intro-card reading-guide">
+                <h2>建議閱讀順序</h2>
+                <ul><li>先讀研究問題與材料系統</li><li>再看反應機制與方程式</li><li>最後對照表徵、限制與文獻</li></ul>
+            </aside>
+        </section>
+        <section aria-labelledby="latest-heading">
+            <h2 id="latest-heading" class="section-heading">最新研究筆記</h2>
+            <div id="article-list">
+                <article class="post-card">
+                    <div class="card-top"><span class="post-date">2026-11-06 · 光催化與資源循環</span><span class="reading-time">約 8 分鐘</span></div>
+                    <div class="tags"><span class="tag">光催化</span><span class="tag">PET / PE</span><span class="tag">綠色氫氣</span></div>
+                    <h3><a href="notes/photocatalytic-recycling.html">半導體光催化實現塑膠高值化回收之反應機制</a></h3>
+                    <p>從光生電子與電洞談起，說明塑膠光重整如何耦合有機物氧化與氫氣生成，並比較 PET 與聚烯烴的前處理差異、產物分析與放大挑戰。</p>
+                    <ul class="takeaways"><li>釐清 PET 水解與光重整的分工</li><li>追蹤載子、催化位點與產物選擇性</li><li>辨認效率指標與碳平衡的限制</li></ul>
+                    <a class="read-link" href="notes/photocatalytic-recycling.html">閱讀完整筆記 →</a>
+                </article>
+                <article class="post-card">
+                    <div class="card-top"><span class="post-date">2026-11-06 · 電池材料與電化學</span><span class="reading-time">約 9 分鐘</span></div>
+                    <div class="tags"><span class="tag">鋰離子電池</span><span class="tag">SEI / CEI</span><span class="tag">EIS</span></div>
+                    <h3><a href="notes/battery-intro.html">鋰離子電池電極介面與高容量材料發展趨勢</a></h3>
+                    <p>整理電極—電解液界面的成膜與電荷轉移，連結 Butler–Volmer 動力學、阻抗譜判讀，以及矽基負極膨脹與循環衰退的材料設計方向。</p>
+                    <ul class="takeaways"><li>分清 SEI、CEI 與界面阻抗</li><li>用 Nyquist 頻段提出可驗證的解讀</li><li>同時考量容量、循環壽命與首圈效率</li></ul>
+                    <a class="read-link" href="notes/battery-intro.html">閱讀完整筆記 →</a>
+                </article>
+            </div>
+        </section>
     </main>
-
+    <footer><div class="shell">ChemMate Research Hub · 以機制為主線，讓材料、反應與量測彼此對照。</div></footer>
 </body>
 </html>

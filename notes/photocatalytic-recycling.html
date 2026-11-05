@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="半導體光催化塑膠光重整：載子機制、PET 水解、PE 前處理、產物分析與放大限制。">
+    <title>半導體光催化實現塑膠高值化回收 | ChemMate</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+    <style>
+        :root { --bg:#fdfbf7; --ink:#2c3e50; --muted:#65717a; --blue:#5c768d; --green:#688575; --line:#e5dfd4; --paper:#fff; --sand:#f3efe7; }
+        * { box-sizing:border-box; }
+        body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC",sans-serif; max-width:900px; padding:30px 22px 60px; margin-inline:auto; line-height:1.85; }
+        a { color:var(--blue); } .back-link { display:inline-block; margin:0 0 22px; font-weight:700; text-decoration:none; }
+        .eyebrow { color:var(--green); letter-spacing:.12em; font-size:.8rem; font-weight:700; text-transform:uppercase; }
+        h1 { margin:7px 0 10px; padding-bottom:15px; border-bottom:2px solid var(--line); font-size:clamp(1.8rem,4vw,2.45rem); line-height:1.35; }
+        .meta { color:#858b8c; font-size:.9rem; } .lede { color:var(--muted); font-size:1.08rem; }
+        .tags { display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 24px; } .tag { display:inline-block; background:#e9efeb; color:#4d6c5c; padding:3px 10px; border-radius:999px; font-size:.82rem; }
+        .summary { background:#fff; border:1px solid var(--line); border-left:5px solid var(--green); border-radius:10px; padding:18px 22px; margin:25px 0; }
+        .summary strong { display:block; margin-bottom:5px; } .summary p { margin:0; color:var(--muted); }
+        nav.toc { background:#f3f0e9; border-radius:10px; padding:16px 20px; margin:26px 0; } nav.toc strong { display:block; margin-bottom:6px; } nav.toc ul { margin:0; padding-left:1.2rem; columns:2; } nav.toc a { text-decoration:none; }
+        h2 { margin:38px 0 12px; padding-left:12px; border-left:4px solid var(--blue); color:#34495e; font-size:1.35rem; }
+        h3 { margin:23px 0 8px; font-size:1.08rem; } p { margin:10px 0 14px; } .formula-box { overflow-x:auto; text-align:center; background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:18px 12px; margin:18px 0; }
+        .note { background:#eef2ef; border-radius:8px; padding:13px 16px; color:#4d6258; margin:18px 0; }
+        table { width:100%; border-collapse:collapse; margin:18px 0 24px; background:#fff; font-size:.94rem; } th,td { border:1px solid var(--line); padding:11px 12px; text-align:left; vertical-align:top; } th { background:#edf1ee; color:#3e5b4e; }
+        .reference-list li { margin:9px 0; overflow-wrap:anywhere; } .footnote { color:#858b8c; font-size:.88rem; border-top:1px solid var(--line); margin-top:36px; padding-top:18px; }
+        @media(max-width:650px) { body { padding:22px 16px 42px; } nav.toc ul { columns:1; } table { display:block; overflow-x:auto; white-space:normal; } }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-link">← 回到研究手帳</a>
+    <header>
+        <div class="eyebrow">Photocatalysis · Plastic Upcycling</div>
+        <h1>半導體光催化實現塑膠高值化回收之反應機制</h1>
+        <div class="meta">研究筆記｜更新日期：2026-11-06｜主題：光催化 / 綠色化工</div>
+        <p class="lede">塑膠可作為光重整反應的有機電子供體：光吸收產生的電子可用於質子還原，電洞則氧化塑膠衍生物。要評估這條路徑，必須同時追蹤氫氣、液相有機物、碳平衡與前處理成本。</p>
+        <div class="tags"><span class="tag">光生電子 / 電洞</span><span class="tag">PET 水解</span><span class="tag">PE 前處理</span><span class="tag">氫氣與有機酸</span></div>
+    </header>
+    <aside class="summary"><strong>本篇摘要</strong><p>光催化塑膠資源化通常是「前處理／解聚 + 光重整」的串接流程。PET 的酯鍵可在鹼性條件下水解成乙二醇（EG）與對苯二甲酸鹽；EG 可作為氧化底物，與光生電子還原水／質子生成氫氣。PE 等聚烯烴缺乏可水解的酯鍵，常需先氧化成短鏈含氧分子。產物分布依底物濃度、催化劑、光源、pH 與反應時間而變，不能將單一研究的產物直接當成通用結果。</p></aside>
+    <nav class="toc" aria-label="目錄"><strong>閱讀導覽</strong><ul><li><a href="#motivation">回收問題與反應概念</a></li><li><a href="#mechanism">半導體載子機制</a></li><li><a href="#feedstocks">PET 與 PE 的前處理差異</a></li><li><a href="#catalysts">催化劑設計</a></li><li><a href="#analysis">產物與效能分析</a></li><li><a href="#limits">限制與放大研究</a></li></ul></nav>
+
+    <main>
+        <section id="motivation">
+            <h2>1. 研究背景：從降級回收轉向分子層級資源化</h2>
+            <p>機械回收需要相對乾淨且可分類的塑膠流，重複加工也可能降低材料性能。化學回收與催化轉化則嘗試將聚合物拆解或轉化成單體、燃料與化學原料。光重整（photoreforming）把光驅動氧化反應與氫氣生成耦合，目標是在較溫和的反應器條件下共同產生燃料與可利用的碳產物。</p>
+            <p>這裡的「高值化」不應只由產物名稱判斷。產率、選擇性、分離純化、反應物前處理、鹼／酸消耗、光能利用率和催化劑壽命都會影響實際價值。若最終混合物難分離，或前處理能耗很高，實驗室的高活性未必代表整體流程具環境或經濟優勢。</p>
+        </section>
+
+        <section id="mechanism">
+            <h2>2. 半導體光生載子與耦合氧化還原</h2>
+            <p>當半導體吸收能量足夠的光子時，價帶電子被激發至導帶，留下電洞：</p>
+            <div class="formula-box">$$\text{Photocatalyst} + h\nu \rightarrow e^-_{\mathrm{CB}} + h^+_{\mathrm{VB}}$$</div>
+            <p>導帶電子與價帶電洞必須在體相或表面復合前抵達反應位點。電子可參與質子／水的還原，電洞則氧化塑膠、低聚物或前處理後的單體。以酸性寫法表示氫氣生成半反應為：</p>
+            <div class="formula-box">$$2\mathrm{H^+} + 2e^- \rightarrow \mathrm{H_2}$$</div>
+            <p>若在鹼性介質，常用水還原表示為 $2\mathrm{H_2O}+2e^-\rightarrow\mathrm{H_2}+2\mathrm{OH^-}$。實際反應式與局部 pH 依介質而定。氧化端不是單一固定的「塑膠變成甲酸」反應：不同聚合物及中間體可形成醛、羧酸、CO、CO<sub>2</sub> 或其他產物，並可能同時發生多條反應路徑。</p>
+            <h3>能帶與表面反應的設計條件</h3>
+            <ul>
+                <li><strong>能帶位置：</strong>導帶需具備足夠還原能力，價帶需具備氧化底物的能力；僅縮小能隙不保證整體反應更快。</li>
+                <li><strong>載子分離：</strong>異質接面、助催化劑或缺陷可改變載子遷移與表面反應，但也可能形成復合中心或遮蔽吸光位點。</li>
+                <li><strong>界面吸附：</strong>底物與中間體的吸附強度、表面官能基與溶液 pH 會影響反應速率及選擇性。</li>
+                <li><strong>電荷與物料平衡：</strong>量測氫氣之外，也要量測液相、氣相含碳產物與殘留固體，才能判定電子供體的實際去向。</li>
+            </ul>
+        </section>
+
+        <section id="feedstocks">
+            <h2>3. PET 與 PE：聚合物結構決定前處理路徑</h2>
+            <table><thead><tr><th>材料</th><th>結構特徵</th><th>典型前處理 / 光重整思路</th><th>解讀重點</th></tr></thead><tbody>
+                <tr><td><strong>PET</strong><br>聚對苯二甲酸乙二酯</td><td>聚酯主鏈含可水解酯鍵</td><td>鹼性水解可生成乙二醇與對苯二甲酸鹽；之後常以 EG 作氧化底物，並同步產氫。</td><td>對苯二甲酸鹽與 EG 的反應活性不同；鹼濃度、單體濃度與商品瓶添加物可能改變產物選擇性。</td></tr>
+                <tr><td><strong>PE</strong><br>聚乙烯</td><td>以 C–C 與 C–H 鍵為主，不含聚酯可水解鍵</td><td>一項代表性研究先以硝酸水熱氧化，將 PE 轉成短鏈羧酸，再進行光重整。</td><td>須把高溫酸氧化的前處理能耗、腐蝕與廢液處理算入流程；不能與 PET 的鹼解流程混為一談。</td></tr>
+            </tbody></table>
+            <h3>PET 水解示意</h3>
+            <p>在鹼性介質中，PET 重複單元的酯鍵可裂解；簡化的化學計量示意如下，實際廢料中還會受結晶度、粒徑、染料與添加物影響：</p>
+            <div class="formula-box">$$\mathrm{C_{10}H_8O_4} + 2\mathrm{NaOH} \rightarrow \mathrm{Na_2C_8H_4O_4} + \mathrm{C_2H_6O_2}$$</div>
+            <p>生成的乙二醇可進入光催化氧化路徑；對苯二甲酸鹽通常需另行回收或純化。原始研究指出，MoS<sub>2</sub>/g-C<sub>3</sub>N<sub>4</sub> 系統中，PET 水解液的有機產物分布與 EG 濃度相關；因此比較不同研究時，應同時閱讀底物濃度與前處理條件，而非只對照催化劑名稱。</p>
+        </section>
+
+        <section id="catalysts">
+            <h2>4. 催化劑設計：活性、選擇性與穩定性要一起評估</h2>
+            <p>常見材料包含 TiO<sub>2</sub>、石墨相氮化碳（g-C<sub>3</sub>N<sub>4</sub>）、硫化物及其異質接面，並可搭配金屬或非金屬助催化位點。TiO<sub>2</sub> 化學穩定，但主要吸收紫外光；g-C<sub>3</sub>N<sub>4</sub> 可吸收較長波長光，卻可能面臨電荷復合或表面反應速率限制。設計不能只追求更高吸光度，而要看有效載子是否到達並完成表面反應。</p>
+            <p>另一項近期研究以高熵氧化物作為 PET 光重整催化劑，報告其相較商用 P25 TiO<sub>2</sub> 有更高活性，並檢視晶格多陽離子、缺陷與載子壽命的關聯。這是特定材料與反應條件下的結果，不代表高熵材料普遍優於 TiO<sub>2</sub>；需要在相同光強、底物、催化劑負載與反應器幾何下做公平比較。</p>
+            <div class="note"><strong>異質接面的判讀：</strong>示意圖中的能帶排列不等於已證明載子轉移機制。可搭配穩態／時間解析光致發光、光電流、EIS、表面光電壓或原位光譜等證據；單一 PL 強度下降也可能來自非輻射復合增加，需配合其他量測。</div>
+        </section>
+
+        <section id="analysis">
+            <h2>5. 產物與效能分析：建立可比較的數據鏈</h2>
+            <table><thead><tr><th>問題</th><th>建議量測</th><th>報告時的必要條件</th></tr></thead><tbody>
+                <tr><td>是否生成氫氣與其他氣體？</td><td>氣相層析（GC），依氣體種類選擇 TCD/FID 或適合的檢測器</td><td>反應器體積、取樣方式、校正曲線、光照時間與催化劑質量</td></tr>
+                <tr><td>形成哪些可溶性有機物？</td><td>定量 NMR、HPLC/離子層析、LC–MS；依目標產物選擇方法</td><td>標準品、內標、回收率、檢出限與液相體積</td></tr>
+                <tr><td>聚合物或催化劑是否改變？</td><td>FTIR、XPS、SEM/TEM、XRD；必要時分析殘餘固體與金屬溶出</td><td>反應前後樣品處理方式、重複次數與催化劑回收流程</td></tr>
+                <tr><td>系統效率是否可比較？</td><td>氫氣生成速率、表觀量子效率／量子產率、產物選擇性、碳平衡</td><td>波長分布與光強、有效受光面積、光路、底物濃度、pH 與空白對照</td></tr>
+            </tbody></table>
+            <p>至少設置無光、無催化劑、無塑膠衍生底物等對照，並確認反應器是否漏氣或有背景碳污染。若宣稱塑膠被轉化，應以殘餘固體質量／表徵和產物碳收率相互核對；僅量到氫氣並不足以證明碳流向已被完整掌握。</p>
+        </section>
+
+        <section id="limits">
+            <h2>6. 技術瓶頸與放大時的關鍵問題</h2>
+            <ul>
+                <li><strong>前處理負擔：</strong>高濃度鹼或酸、升溫、長時間攪拌與洗滌可能帶來試劑回收、腐蝕及鹽類副產物問題。</li>
+                <li><strong>光子利用與反應器尺度：</strong>懸浮催化劑會散射光並增加固液分離需求；光穿透距離與反應器面積／體積比會影響放大性能。</li>
+                <li><strong>選擇性與分離：</strong>多條氧化路徑可同時發生，形成的混合酸、醇與氣體可能增加純化成本。</li>
+                <li><strong>真實廢料差異：</strong>顏色、填料、黏著劑、標籤、多層結構和污染物會改變吸光、催化劑表面與分析結果。</li>
+                <li><strong>催化劑壽命：</strong>需長時間連續或重複批次測試，監測活性衰退、表面中毒、金屬溶出與回收再利用。</li>
+                <li><strong>全流程評估：</strong>將前處理、反應、分離、試劑循環與氫氣純化納入能量／碳足跡評估，才能判斷是否真正低碳。</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>結論與研究判斷</h2>
+            <p>光催化塑膠回收的核心是把「底物解聚／氧化」與「載子利用」整合在同一條反應鏈中。PET 可透過酯鍵水解接入光重整，PE 則需面對 C–C 主鏈的惰性與前處理成本。下一步材料研究應同時回答：光生載子如何分離、哪個中間體被選擇性氧化、氫氣中的氫與碳產物來自何處，以及在真實光照與廢塑膠條件下是否能維持穩定和物料平衡。</p>
+        </section>
+
+        <section>
+            <h2>延伸閱讀與原始研究</h2>
+            <ol class="reference-list">
+                <li>H. Kang et al., “Concentration-Dependent Photocatalytic Upcycling of Poly(ethylene terephthalate) Plastic Waste,” <em>ACS Materials Letters</em> 5 (2023), 3032–3041. <a href="https://doi.org/10.1021/acsmaterialslett.3c01134" target="_blank" rel="noopener noreferrer">閱讀原文</a></li>
+                <li>“Efficient photoreforming of plastic waste using a high-entropy oxide catalyst,” <em>Journal of Catalysis</em> 440 (2024), 115808. <a href="https://doi.org/10.1016/j.jcat.2024.115808" target="_blank" rel="noopener noreferrer">閱讀原文</a></li>
+                <li>“Trash to Treasure: Photoreforming of Plastic Waste into Commodity Chemicals and Hydrogen over MoS<sub>2</sub>-Tipped CdS Nanorods,” <em>ACS Catalysis</em> (2022). <a href="https://doi.org/10.1021/acscatal.2c03605" target="_blank" rel="noopener noreferrer">閱讀原文</a></li>
+                <li>For broader context, see “From Plastic Waste to Green Hydrogen and Valuable Chemicals Using Sunlight and Water,” <em>Angewandte Chemie International Edition</em> (2024). <a href="https://doi.org/10.1002/anie.202401746" target="_blank" rel="noopener noreferrer">閱讀綜述</a></li>
+            </ol>
+        </section>
+    </main>
+    <p class="footnote">本頁為研究導讀，不宣稱所有塑膠都能在溫和條件下直接轉化。催化活性與產物分布必須連同前處理、光源、介質、反應器及分析方法一起報告。</p>
+</body>
+</html>
