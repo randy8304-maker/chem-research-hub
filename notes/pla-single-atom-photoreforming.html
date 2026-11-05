@@ -21,11 +21,11 @@
         .summary strong { display:block; margin-bottom:5px; } .summary p { margin:0; color:var(--muted); }
         nav.toc { background:#f3f0e9; border-radius:10px; padding:16px 20px; margin:26px 0; } nav.toc strong { display:block; margin-bottom:6px; } nav.toc ul { margin:0; padding-left:1.2rem; columns:2; } nav.toc a { text-decoration:none; }
         h2 { margin:38px 0 12px; padding-left:12px; border-left:4px solid var(--blue); color:#34495e; font-size:1.35rem; }
-        h3 { margin:23px 0 8px; font-size:1.08rem; } p { margin:10px 0 14px; } .formula-box { overflow-x:auto; text-align:center; background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:18px 12px; margin:18px 0; }
+        h3 { margin:23px 0 8px; font-size:1.08rem; } p { margin:10px 0 14px; } .diagram { margin:24px 0 30px; background:#fff; border:1px solid var(--line); border-radius:13px; overflow:hidden; } .diagram img { display:block; width:100%; height:auto; } .diagram figcaption { padding:12px 16px; color:var(--muted); font-size:.9rem; border-top:1px solid var(--line); } .formula-box { overflow-x:auto; text-align:center; background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:18px 12px; margin:18px 0; }
         .note { background:#eef2ef; border-radius:8px; padding:13px 16px; color:#4d6258; margin:18px 0; }
         table { width:100%; border-collapse:collapse; margin:18px 0 24px; background:#fff; font-size:.94rem; } th,td { border:1px solid var(--line); padding:11px 12px; text-align:left; vertical-align:top; } th { background:#edf1ee; color:#3e5b4e; }
         .reference-list li { margin:9px 0; overflow-wrap:anywhere; } .footnote { color:#858b8c; font-size:.88rem; border-top:1px solid var(--line); margin-top:36px; padding-top:18px; }
-        @media(max-width:650px) { body { padding:22px 16px 42px; } nav.toc ul { columns:1; } table { display:block; overflow-x:auto; white-space:normal; } }
+        @media(max-width:650px) { body { padding:22px 16px 42px; } nav.toc ul { columns:1; } table { display:block; overflow-x:auto; white-space:normal; } .diagram { overflow-x:auto; } .diagram img { width:720px; max-width:none; } }
     </style>
 </head>
 <body>
@@ -38,6 +38,7 @@
         <div class="tags"><span class="tag">PLA 資源化</span><span class="tag">Ni 單原子</span><span class="tag">CdS 光催化劑</span><span class="tag">氫氣 / 丙酮酸</span></div>
     </header>
     <aside class="summary"><strong>研究摘要</strong><p>本文的「無鹼」指前水解不添加鹼或其他催化添加物；作者仍以熱水在 150°C 下處理 PLA 10 小時，使其水解為乳酸，再進行光重整。最佳 Ni 含量約 0.79% 的 Ni/CdS，在模擬太陽光下達到 H<sub>2</sub> 3.93、丙酮酸 3.66 mmol g<sub>cat</sub><sup>−1</sup> h<sup>−1</sup>。研究並展示 12 天戶外連續流操作，但這仍是需要進一步評估前處理能耗、鎘安全與產物分離的原型流程。</p></aside>
+    <figure class="diagram"><img src="../assets/pla-nickel-single-atom-pathway.svg" alt="PLA 經 150 度熱水預水解成乳酸後，在可見光下由 Ni 單原子 CdS 轉化為丙酮酸和氫氣"><figcaption>圖 1｜流程分成熱水解聚與光催化兩段。Ni 單原子位於 CdS 表面，研究提出其協助電子轉移及底物活化；示意圖為反應概念，不按比例呈現原子結構。</figcaption></figure>
     <nav class="toc" aria-label="目錄"><strong>閱讀導覽</strong><ul><li><a href="#question">問題與研究設計</a></li><li><a href="#process">材料與反應流程</a></li><li><a href="#mechanism">單原子位點機制</a></li><li><a href="#results">主要結果與量測</a></li><li><a href="#scale">戶外放大與限制</a></li><li><a href="#takeaway">研究判讀</a></li></ul></nav>
 
     <main>
@@ -60,12 +61,14 @@
             <p>這個方程式呈現乳酸脫去兩個氫原子後形成丙酮酸的總體變化，不代表所有表面基元步驟都已簡化為單一步驟。</p>
             <h3>催化劑結構與製備</h3>
             <p>CdS 奈米晶以水熱法製備；Ni 透過浸漬與煅燒固定於 CdS 表面。HAADF-STEM、元素映射、XANES 與 EXAFS 等結果支持 Ni 以孤立原子形式存在，主要與周圍 S 配位；作者未觀察到 Ni–Ni 配位訊號，並提出部分表面 Cd 位點被 Ni 取代的結構模型。這些證據比單靠 XRD「沒有 Ni 顆粒峰」更能支持單原子判定。</p>
+            <p>單原子催化劑的核心判讀不只是「金屬分散得很細」，而是要回答原子級配位環境、實際負載量及反應後是否仍保持孤立。論文以顯微影像觀察分散、以 XAS/EXAFS 協助辨識局部配位與 Ni–Ni 散射，並結合光電化學及產物數據建立結構—性能關聯。這類證據支持特定樣品中的單原子模型，但不表示每一個 Ni 位點都具有完全相同的周圍環境。</p>
         </section>
 
         <section id="mechanism">
             <h2>3. 反應機制：Ni 位點把電子轉移與底物選擇性連起來</h2>
             <p>照光後，CdS 產生電子與電洞；研究提出 Ni 單原子可接收 CdS 導帶電子，形成局部富電子區域並改變表面電荷分布。光致發光、光電化學阻抗、瞬態光電流與飛秒瞬態吸收等結果共同支持 Ni/CdS 的電荷轉移行為有所改變。</p>
             <p>在底物端，DFT 計算顯示乳酸較有利於吸附在 Ni 鄰近的 S 位點，並由 α-OH 配位促進後續反應。原位 DRIFTS、EPR 與計算提出的主路徑為：</p>
+            <p>可以把位點功能拆成兩個互補問題：Ni 鄰近區域改變光生電子的捕獲與轉移；乳酸在表面定位後，羥基與 α 碳氫鍵依序活化，讓反應較有機會停留在丙酮酸而非完全氧化。這個解讀由多種表徵與計算共同支持，仍需注意光譜訊號對應的是不同時間尺度及表面中間體，不宜單靠某一條訊號宣稱完整反應路徑已被直接觀察。</p>
             <ol>
                 <li>乳酸 α-OH 去質子化，形成氧中心自由基中間體。</li>
                 <li>接續移除 α 碳上的氫，形成丙酮酸；Ni 位點使此選擇性路徑的能量障礙降低。</li>
