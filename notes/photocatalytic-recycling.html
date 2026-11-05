@@ -21,11 +21,11 @@
         .summary strong { display:block; margin-bottom:5px; } .summary p { margin:0; color:var(--muted); }
         nav.toc { background:#f3f0e9; border-radius:10px; padding:16px 20px; margin:26px 0; } nav.toc strong { display:block; margin-bottom:6px; } nav.toc ul { margin:0; padding-left:1.2rem; columns:2; } nav.toc a { text-decoration:none; }
         h2 { margin:38px 0 12px; padding-left:12px; border-left:4px solid var(--blue); color:#34495e; font-size:1.35rem; }
-        h3 { margin:23px 0 8px; font-size:1.08rem; } p { margin:10px 0 14px; } .formula-box { overflow-x:auto; text-align:center; background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:18px 12px; margin:18px 0; }
+        h3 { margin:23px 0 8px; font-size:1.08rem; } p { margin:10px 0 14px; } .diagram { margin:24px 0 30px; background:#fff; border:1px solid var(--line); border-radius:13px; overflow:hidden; } .diagram img { display:block; width:100%; height:auto; } .diagram figcaption { padding:12px 16px; color:var(--muted); font-size:.9rem; border-top:1px solid var(--line); } .formula-box { overflow-x:auto; text-align:center; background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:18px 12px; margin:18px 0; }
         .note { background:#eef2ef; border-radius:8px; padding:13px 16px; color:#4d6258; margin:18px 0; }
         table { width:100%; border-collapse:collapse; margin:18px 0 24px; background:#fff; font-size:.94rem; } th,td { border:1px solid var(--line); padding:11px 12px; text-align:left; vertical-align:top; } th { background:#edf1ee; color:#3e5b4e; }
         .reference-list li { margin:9px 0; overflow-wrap:anywhere; } .footnote { color:#858b8c; font-size:.88rem; border-top:1px solid var(--line); margin-top:36px; padding-top:18px; }
-        @media(max-width:650px) { body { padding:22px 16px 42px; } nav.toc ul { columns:1; } table { display:block; overflow-x:auto; white-space:normal; } }
+        @media(max-width:650px) { body { padding:22px 16px 42px; } nav.toc ul { columns:1; } table { display:block; overflow-x:auto; white-space:normal; } .diagram { overflow-x:auto; } .diagram img { width:720px; max-width:none; } }
     </style>
 </head>
 <body>
@@ -38,6 +38,7 @@
         <div class="tags"><span class="tag">光生電子 / 電洞</span><span class="tag">PET 水解</span><span class="tag">PE 前處理</span><span class="tag">氫氣與有機酸</span></div>
     </header>
     <aside class="summary"><strong>本篇摘要</strong><p>光催化塑膠資源化通常是「前處理／解聚 + 光重整」的串接流程。PET 的酯鍵可在鹼性條件下水解成乙二醇（EG）與對苯二甲酸鹽；EG 可作為氧化底物，與光生電子還原水／質子生成氫氣。PE 等聚烯烴缺乏可水解的酯鍵，常需先氧化成短鏈含氧分子。產物分布依底物濃度、催化劑、光源、pH 與反應時間而變，不能將單一研究的產物直接當成通用結果。</p></aside>
+    <figure class="diagram"><img src="../assets/photocatalytic-plastic-pathway.svg" alt="PET 與 PE 經不同前處理後進入半導體光催化；電洞氧化有機底物，電子還原產氫"><figcaption>圖 1｜PET 可由酯鍵水解接入光重整；PE 則須先氧化處理。兩種底物之後才分別進入半導體表面反應，圖示用來呈現流程分工，不代表同一催化劑可直接通用。</figcaption></figure>
     <nav class="toc" aria-label="目錄"><strong>閱讀導覽</strong><ul><li><a href="#motivation">回收問題與反應概念</a></li><li><a href="#mechanism">半導體載子機制</a></li><li><a href="#feedstocks">PET 與 PE 的前處理差異</a></li><li><a href="#catalysts">催化劑設計</a></li><li><a href="#analysis">產物與效能分析</a></li><li><a href="#limits">限制與放大研究</a></li></ul></nav>
 
     <main>
@@ -73,6 +74,7 @@
             <p>在鹼性介質中，PET 重複單元的酯鍵可裂解；簡化的化學計量示意如下，實際廢料中還會受結晶度、粒徑、染料與添加物影響：</p>
             <div class="formula-box">$$\mathrm{C_{10}H_8O_4} + 2\mathrm{NaOH} \rightarrow \mathrm{Na_2C_8H_4O_4} + \mathrm{C_2H_6O_2}$$</div>
             <p>生成的乙二醇可進入光催化氧化路徑；對苯二甲酸鹽通常需另行回收或純化。原始研究指出，MoS<sub>2</sub>/g-C<sub>3</sub>N<sub>4</sub> 系統中，PET 水解液的有機產物分布與 EG 濃度相關；因此比較不同研究時，應同時閱讀底物濃度與前處理條件，而非只對照催化劑名稱。</p>
+            <p>PE 的氧化前處理則改變的是主鏈官能基與分子量分布，不是單純把 PE「水解成單體」。短鏈羧酸等含氧物種提供較容易活化的光催化底物；酸氧化所需的熱、酸回收、耐腐蝕設備與後續中和都應列入物料及能源盤查。這也說明按聚合物官能基設計前處理，是整條技術路線的第一個選擇點。</p>
         </section>
 
         <section id="catalysts">
@@ -91,6 +93,10 @@
                 <tr><td>系統效率是否可比較？</td><td>氫氣生成速率、表觀量子效率／量子產率、產物選擇性、碳平衡</td><td>波長分布與光強、有效受光面積、光路、底物濃度、pH 與空白對照</td></tr>
             </tbody></table>
             <p>至少設置無光、無催化劑、無塑膠衍生底物等對照，並確認反應器是否漏氣或有背景碳污染。若宣稱塑膠被轉化，應以殘餘固體質量／表徵和產物碳收率相互核對；僅量到氫氣並不足以證明碳流向已被完整掌握。</p>
+            <h3>效率指標要配合物料衡算閱讀</h3>
+            <p>氫氣的表觀量子效率（AQE）通常以產生氫氣所需的電子當量與入射光子數相比；生成 1 mol H<sub>2</sub> 對應 2 mol 電子，因此可用下式理解其基本關係：</p>
+            <div class="formula-box">$$\mathrm{AQE}_{H_2}(\%)=\frac{2n(H_2)}{n(\text{incident photons})}\times100$$</div>
+            <p>實際報告需說明光子通量、光譜範圍、受光面積與量測方法。AQE 是特定照光條件下的量子指標，不等於整體太陽能轉化效率；還應並列碳平衡、碳產物選擇性與產物回收率，才能看出聚合物碳骨架的去向。</p>
         </section>
 
         <section id="limits">
@@ -123,3 +129,4 @@
     <p class="footnote">本頁為研究導讀，不宣稱所有塑膠都能在溫和條件下直接轉化。催化活性與產物分布必須連同前處理、光源、介質、反應器及分析方法一起報告。</p>
 </body>
 </html>
+
