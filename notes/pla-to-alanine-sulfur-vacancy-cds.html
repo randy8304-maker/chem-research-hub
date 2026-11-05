@@ -21,11 +21,11 @@
         .summary strong { display:block; margin-bottom:5px; } .summary p { margin:0; color:var(--muted); }
         nav.toc { background:#f3f0e9; border-radius:10px; padding:16px 20px; margin:26px 0; } nav.toc strong { display:block; margin-bottom:6px; } nav.toc ul { margin:0; padding-left:1.2rem; columns:2; } nav.toc a { text-decoration:none; }
         h2 { margin:38px 0 12px; padding-left:12px; border-left:4px solid var(--blue); color:#34495e; font-size:1.35rem; }
-        h3 { margin:23px 0 8px; font-size:1.08rem; } p { margin:10px 0 14px; } .formula-box { overflow-x:auto; text-align:center; background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:18px 12px; margin:18px 0; }
+        h3 { margin:23px 0 8px; font-size:1.08rem; } p { margin:10px 0 14px; } .diagram { margin:24px 0 30px; background:#fff; border:1px solid var(--line); border-radius:13px; overflow:hidden; } .diagram img { display:block; width:100%; height:auto; } .diagram figcaption { padding:12px 16px; color:var(--muted); font-size:.9rem; border-top:1px solid var(--line); } .formula-box { overflow-x:auto; text-align:center; background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:18px 12px; margin:18px 0; }
         .note { background:#eef2ef; border-radius:8px; padding:13px 16px; color:#4d6258; margin:18px 0; }
         table { width:100%; border-collapse:collapse; margin:18px 0 24px; background:#fff; font-size:.94rem; } th,td { border:1px solid var(--line); padding:11px 12px; text-align:left; vertical-align:top; } th { background:#edf1ee; color:#3e5b4e; }
         .reference-list li { margin:9px 0; overflow-wrap:anywhere; } .footnote { color:#858b8c; font-size:.88rem; border-top:1px solid var(--line); margin-top:36px; padding-top:18px; }
-        @media(max-width:650px) { body { padding:22px 16px 42px; } nav.toc ul { columns:1; } table { display:block; overflow-x:auto; white-space:normal; } }
+        @media(max-width:650px) { body { padding:22px 16px 42px; } nav.toc ul { columns:1; } table { display:block; overflow-x:auto; white-space:normal; } .diagram { overflow-x:auto; } .diagram img { width:720px; max-width:none; } }
     </style>
 </head>
 <body>
@@ -38,6 +38,7 @@
         <div class="tags"><span class="tag">PLA 資源化</span><span class="tag">硫空缺 CdS</span><span class="tag">C–N 偶聯</span><span class="tag">丙胺酸</span></div>
     </header>
     <aside class="summary"><strong>研究摘要</strong><p>作者提出一鍋式流程：PLA 在氨水中先經熱促進的氨解與水解，形成乳醯胺與乳酸銨；可見光激發 CdS 後，乳酸根轉為丙酮酸，再與氨形成亞胺並被光生電子還原為丙胺酸。中等硫空缺量的 CdS-3 表現最佳，50°C 下丙胺酸生成速率約 2.15 mmol g<sub>cat</sub><sup>−1</sup> h<sup>−1</sup>，70°C 時約 4.95 mmol g<sub>cat</sub><sup>−1</sup> h<sup>−1</sup>。這是可見光驅動的實驗室資源化示範，仍使用濃氨水、惰性氣氛與加熱，不能直接視為無能耗或已商業化流程。</p></aside>
+    <figure class="diagram"><img src="../assets/pla-sulfur-vacancy-alanine-pathway.svg" alt="氨水將 PLA 解聚成乳酸銨和乳醯胺；可見光下的適量硫空缺 CdS 促進乳酸經丙酮酸、亞胺生成丙胺酸"><figcaption>圖 1｜PLA 解聚主要由氨水中的氨解與水解啟動，CdS 光催化後段乳酸的胺化。硫空缺提供吸附位點，但過量缺陷會降低電荷傳輸，故 CdS-3 的中等缺陷量較合適。</figcaption></figure>
     <nav class="toc" aria-label="目錄"><strong>閱讀導覽</strong><ul><li><a href="#question">研究問題與特色</a></li><li><a href="#materials">催化劑設計與表徵</a></li><li><a href="#pathway">PLA 轉化反應路徑</a></li><li><a href="#mechanism">空缺效應與機制證據</a></li><li><a href="#performance">性能、循環與真實廢料</a></li><li><a href="#limits">工程限制與研究判讀</a></li></ul></nav>
 
     <main>
@@ -52,6 +53,7 @@
             <h2>2. 催化劑設計：以室溫沉澱調控硫空缺</h2>
             <p>作者在室溫下將硫化鈉（Na<sub>2</sub>S）溶液逐滴加入醋酸鎘（Cd(OAc)<sub>2</sub>）溶液，混合約 1 小時後離心、洗滌、乾燥，得到黃色 CdS 奈米晶粉末。透過改變前驅物 Cd:S 莫耳比，製備 CdS-1 至 CdS-6 系列；CdS-3 對應前驅物比 5:3。此合成策略簡單，但「室溫製備催化劑」不等於整個 PLA 反應也在室溫最佳化操作。</p>
             <p>TEM 顯示奈米晶以團簇形式存在，基本粒子約 8–12 nm；不同樣品形貌大致相近。XRD 支持立方相 CdS，EPR 在約 g = 2.003 的訊號用於追蹤硫空缺相關缺陷。作者再以 XPS 估算表面缺陷、ICP-OES 估算整體（bulk）硫空缺含量。由 CdS-6 到 CdS-1，bulk 空缺含量依序約 1.0%、12.3%、15.3%、23.1%、28.1%、37.5%；數字代表不同測量尺度的缺陷估算，不宜直接當作精確且均勻的晶格組成。</p>
+            <p>前驅物比例是調控旋鈕，不是空缺量的直接量測值：更少的硫前驅物大致帶來更多硫空缺，但最終表面與體相缺陷仍需用表徵確認。這也是作者同時比較 EPR、XPS 與 ICP-OES 的原因；TEM/XRD 則用來檢查粒徑、結晶相及大尺度形貌是否出現明顯差異，避免把形貌變化誤認為單純的缺陷效應。</p>
             <table><thead><tr><th>樣品／量測</th><th>論文報告</th><th>研究用途</th></tr></thead><tbody>
                 <tr><td>前驅物比例</td><td>Cd:S = 5:1 至 5:6；最佳樣品 CdS-3 為 5:3</td><td>建立一系列缺陷量不同的 CdS 奈米晶。</td></tr>
                 <tr><td>粒子尺寸</td><td>約 8–12 nm，團簇形貌</td><td>TEM/HRTEM 觀察形貌與晶格。</td></tr>
@@ -75,6 +77,7 @@
             <h2>4. 空缺如何提升反應：增加吸附位點，但過量會傷害傳輸</h2>
             <p>作者的光電流、電化學阻抗、瞬態吸收、光致發光與 FT-IR 等表徵，協助比較系列 CdS 的光生載子行為與乳酸吸附。FT-IR 中，游離乳酸的訊號隨空缺增加而減弱，與表面鍵結乳酸訊號增加相符。DFT 計算顯示乳酸在硫空缺位點的吸附能約 −0.84 eV，較非缺陷位置的 −0.69 eV 更有利，支持空缺可作為額外吸附位點的解釋。</p>
             <p>然而，缺陷增加並非單向有利。中等含量 CdS-3 的活性最高；更高缺陷量的 CdS-2、CdS-1 之電荷傳輸速率下降，抵銷了吸附位點增加所帶來的好處，形成火山型活性趨勢。作者指出，bulk 硫空缺超過約 10% 後可能妨礙電荷傳輸與分離；這是該系列材料中的關聯與機制解釋，不應不加區分地外推至所有 CdS 系統。</p>
+            <p>解讀這條火山曲線時，可把低缺陷端視為「可用吸附位點不足」，高缺陷端則是「缺陷造成傳輸代價上升」；中間存在吸附與載子運輸的折衷。由於不同方法量測的空缺尺度不同，實務上不應只用一個百分比當成通用最佳值，而要連同合成條件、表面吸附、電荷動力學及反應速率一起報告。</p>
             <h3>光生載子與自由基證據</h3>
             <ul>
                 <li>加入 0.02 M 電子捕捉劑硝基苯後，丙胺酸生成受到抑制，顯示光生電子參與反應。</li>
