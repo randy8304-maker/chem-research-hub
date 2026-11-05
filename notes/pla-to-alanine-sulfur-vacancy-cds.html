@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="整理硫空缺 CdS 奈米晶以可見光將 PLA 廢塑膠轉化為丙胺酸的反應路徑、催化機制與工程限制。">
+    <title>硫空缺 CdS 光催化 PLA 製丙胺酸 | ChemMate</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+    <style>
+        :root { --bg:#fdfbf7; --ink:#2c3e50; --muted:#65717a; --blue:#5c768d; --green:#688575; --line:#e5dfd4; --paper:#fff; --sand:#f3efe7; }
+        * { box-sizing:border-box; }
+        body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC",sans-serif; max-width:900px; padding:30px 22px 60px; margin-inline:auto; line-height:1.85; }
+        a { color:var(--blue); } .back-link { display:inline-block; margin:0 0 22px; font-weight:700; text-decoration:none; }
+        .eyebrow { color:var(--green); letter-spacing:.12em; font-size:.8rem; font-weight:700; text-transform:uppercase; }
+        h1 { margin:7px 0 10px; padding-bottom:15px; border-bottom:2px solid var(--line); font-size:clamp(1.8rem,4vw,2.45rem); line-height:1.35; }
+        .meta { color:#858b8c; font-size:.9rem; } .lede { color:var(--muted); font-size:1.08rem; }
+        .tags { display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 24px; } .tag { display:inline-block; background:#e9efeb; color:#4d6c5c; padding:3px 10px; border-radius:999px; font-size:.82rem; }
+        .summary { background:#fff; border:1px solid var(--line); border-left:5px solid var(--green); border-radius:10px; padding:18px 22px; margin:25px 0; }
+        .summary strong { display:block; margin-bottom:5px; } .summary p { margin:0; color:var(--muted); }
+        nav.toc { background:#f3f0e9; border-radius:10px; padding:16px 20px; margin:26px 0; } nav.toc strong { display:block; margin-bottom:6px; } nav.toc ul { margin:0; padding-left:1.2rem; columns:2; } nav.toc a { text-decoration:none; }
+        h2 { margin:38px 0 12px; padding-left:12px; border-left:4px solid var(--blue); color:#34495e; font-size:1.35rem; }
+        h3 { margin:23px 0 8px; font-size:1.08rem; } p { margin:10px 0 14px; } .formula-box { overflow-x:auto; text-align:center; background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:18px 12px; margin:18px 0; }
+        .note { background:#eef2ef; border-radius:8px; padding:13px 16px; color:#4d6258; margin:18px 0; }
+        table { width:100%; border-collapse:collapse; margin:18px 0 24px; background:#fff; font-size:.94rem; } th,td { border:1px solid var(--line); padding:11px 12px; text-align:left; vertical-align:top; } th { background:#edf1ee; color:#3e5b4e; }
+        .reference-list li { margin:9px 0; overflow-wrap:anywhere; } .footnote { color:#858b8c; font-size:.88rem; border-top:1px solid var(--line); margin-top:36px; padding-top:18px; }
+        @media(max-width:650px) { body { padding:22px 16px 42px; } nav.toc ul { columns:1; } table { display:block; overflow-x:auto; white-space:normal; } }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-link">← 回到研究手帳</a>
+    <header>
+        <div class="eyebrow">Photocatalysis · Polymer Upcycling</div>
+        <h1>硫空缺 CdS 光催化 PLA 廢塑膠製丙胺酸</h1>
+        <div class="meta">研究筆記｜整理日期：2026-11-06｜論文刊登：2025-01-20</div>
+        <p class="lede">研究以室溫合成、含不同硫空缺量的硫化鎘（CdS）奈米晶，在氨水與可見光下將聚乳酸（PLA）轉成丙胺酸。關鍵並非空缺越多越好：適量表面空缺增加乳酸吸附位點，過多空缺則可能拖慢電荷傳輸。</p>
+        <div class="tags"><span class="tag">PLA 資源化</span><span class="tag">硫空缺 CdS</span><span class="tag">C–N 偶聯</span><span class="tag">丙胺酸</span></div>
+    </header>
+    <aside class="summary"><strong>研究摘要</strong><p>作者提出一鍋式流程：PLA 在氨水中先經熱促進的氨解與水解，形成乳醯胺與乳酸銨；可見光激發 CdS 後，乳酸根轉為丙酮酸，再與氨形成亞胺並被光生電子還原為丙胺酸。中等硫空缺量的 CdS-3 表現最佳，50°C 下丙胺酸生成速率約 2.15 mmol g<sub>cat</sub><sup>−1</sup> h<sup>−1</sup>，70°C 時約 4.95 mmol g<sub>cat</sub><sup>−1</sup> h<sup>−1</sup>。這是可見光驅動的實驗室資源化示範，仍使用濃氨水、惰性氣氛與加熱，不能直接視為無能耗或已商業化流程。</p></aside>
+    <nav class="toc" aria-label="目錄"><strong>閱讀導覽</strong><ul><li><a href="#question">研究問題與特色</a></li><li><a href="#materials">催化劑設計與表徵</a></li><li><a href="#pathway">PLA 轉化反應路徑</a></li><li><a href="#mechanism">空缺效應與機制證據</a></li><li><a href="#performance">性能、循環與真實廢料</a></li><li><a href="#limits">工程限制與研究判讀</a></li></ul></nav>
+
+    <main>
+        <section id="question">
+            <h2>1. 研究問題：能否把 PLA 碳骨架轉成含氮高值產品？</h2>
+            <p>許多塑膠光催化研究把有機塑膠作為電子供體，與產氫反應耦合；但如果氧化端只得到混合小分子，碳資源的價值提升有限。本研究聚焦更具選擇性的 C–N 成鍵：將 PLA 的三碳骨架保留在丙胺酸中，同時引入氨所提供的氮。</p>
+            <p>研究設計包含兩個相連、但性質不同的步驟。第一步是 PLA 在氨水中的熱促進解聚，生成乳酸銨與乳醯胺；第二步才是 CdS 吸收可見光後催化乳酸銨的光胺化。對照實驗顯示，黑暗下即使加入 CdS 也不生成丙胺酸，因此解聚和胺基酸合成不能混為一個光催化步驟。</p>
+            <div class="note"><strong>閱讀重點：</strong>所謂「一鍋式」表示兩步在同一反應系統內串接，並不代表 PLA 一照光就直接、單一步驟變成丙胺酸。氨既是氮源，也影響 PLA 的解聚路徑。</div>
+        </section>
+
+        <section id="materials">
+            <h2>2. 催化劑設計：以室溫沉澱調控硫空缺</h2>
+            <p>作者在室溫下將硫化鈉（Na<sub>2</sub>S）溶液逐滴加入醋酸鎘（Cd(OAc)<sub>2</sub>）溶液，混合約 1 小時後離心、洗滌、乾燥，得到黃色 CdS 奈米晶粉末。透過改變前驅物 Cd:S 莫耳比，製備 CdS-1 至 CdS-6 系列；CdS-3 對應前驅物比 5:3。此合成策略簡單，但「室溫製備催化劑」不等於整個 PLA 反應也在室溫最佳化操作。</p>
+            <p>TEM 顯示奈米晶以團簇形式存在，基本粒子約 8–12 nm；不同樣品形貌大致相近。XRD 支持立方相 CdS，EPR 在約 g = 2.003 的訊號用於追蹤硫空缺相關缺陷。作者再以 XPS 估算表面缺陷、ICP-OES 估算整體（bulk）硫空缺含量。由 CdS-6 到 CdS-1，bulk 空缺含量依序約 1.0%、12.3%、15.3%、23.1%、28.1%、37.5%；數字代表不同測量尺度的缺陷估算，不宜直接當作精確且均勻的晶格組成。</p>
+            <table><thead><tr><th>樣品／量測</th><th>論文報告</th><th>研究用途</th></tr></thead><tbody>
+                <tr><td>前驅物比例</td><td>Cd:S = 5:1 至 5:6；最佳樣品 CdS-3 為 5:3</td><td>建立一系列缺陷量不同的 CdS 奈米晶。</td></tr>
+                <tr><td>粒子尺寸</td><td>約 8–12 nm，團簇形貌</td><td>TEM/HRTEM 觀察形貌與晶格。</td></tr>
+                <tr><td>缺陷訊號</td><td>EPR、XPS；ICP-OES 估算 bulk 空缺</td><td>比較缺陷相對含量，並連結活性變化。</td></tr>
+                <tr><td>最佳缺陷量</td><td>CdS-3；表面估值約 20.0%，bulk 約 23.1%</td><td>顯示中等空缺量兼顧吸附與電荷傳輸。</td></tr>
+            </tbody></table>
+        </section>
+
+        <section id="pathway">
+            <h2>3. 反應路徑：先氨解／水解，再由光催化完成胺化</h2>
+            <h3>第一段：PLA 解聚生成乳酸銨與乳醯胺</h3>
+            <p>典型條件為 200 mg PLA、10 mg CdS-3、4 mL 25 wt% 氨水、16 mL 去氧水，在 1 bar N<sub>2</sub> 下以可見光照射、50°C 反應 4 小時。對照組顯示，無光時的 PLA 仍可形成乳酸銨與乳醯胺，說明這些解聚產物主要由氨解／水解形成，光和催化劑對解聚產物生成量影響不大。以 NaOH 取代 NH<sub>3</sub> 的對照也顯示，氨不只是提供鹼性環境，亦直接參與氨解。</p>
+            <p>作者比較以乳醯胺直接作底物及乳酸作底物的反應，並追蹤乳醯胺在氨水中的水解，據此支持 PLA 平行經氨解與水解，先形成乳醯胺與乳酸銨；乳醯胺也能慢慢轉成乳酸銨，但不是唯一來源。</p>
+            <h3>第二段：乳酸氧化、亞胺形成與還原胺化</h3>
+            <p>光生電洞使乳酸脫氫形成丙酮酸；丙酮酸再與氨形成亞胺中間體，並由光生電子與質子還原為丙胺酸。以下為總體反應的簡化表示，實際反應包含表面吸附及多個中間步驟：</p>
+            <div class="formula-box">$$\mathrm{C_3H_6O_3 + NH_3 \rightarrow C_3H_7NO_2 + H_2O}$$<br>乳酸 + 氨 → 丙胺酸 + 水</div>
+            <p>從 PLA 到丙胺酸的整體選擇性還取決於前段解聚產物比例、液相反應及副反應；式子只概括乳酸到丙胺酸的化學計量關係。</p>
+        </section>
+
+        <section id="mechanism">
+            <h2>4. 空缺如何提升反應：增加吸附位點，但過量會傷害傳輸</h2>
+            <p>作者的光電流、電化學阻抗、瞬態吸收、光致發光與 FT-IR 等表徵，協助比較系列 CdS 的光生載子行為與乳酸吸附。FT-IR 中，游離乳酸的訊號隨空缺增加而減弱，與表面鍵結乳酸訊號增加相符。DFT 計算顯示乳酸在硫空缺位點的吸附能約 −0.84 eV，較非缺陷位置的 −0.69 eV 更有利，支持空缺可作為額外吸附位點的解釋。</p>
+            <p>然而，缺陷增加並非單向有利。中等含量 CdS-3 的活性最高；更高缺陷量的 CdS-2、CdS-1 之電荷傳輸速率下降，抵銷了吸附位點增加所帶來的好處，形成火山型活性趨勢。作者指出，bulk 硫空缺超過約 10% 後可能妨礙電荷傳輸與分離；這是該系列材料中的關聯與機制解釋，不應不加區分地外推至所有 CdS 系統。</p>
+            <h3>光生載子與自由基證據</h3>
+            <ul>
+                <li>加入 0.02 M 電子捕捉劑硝基苯後，丙胺酸生成受到抑制，顯示光生電子參與反應。</li>
+                <li>異丙醇需達較高濃度才明顯抑制反應，因乳酸本身也會競爭消耗電洞；因此電子與電洞均參與整體反應。</li>
+                <li>自由基捕捉劑 DMPO 抑制乳酸胺化；光照下 ESR 偵測到氧中心自由基訊號，支持 α-羥基活化中間體參與。</li>
+                <li>提出的反應次序為乳酸先氧化成丙酮酸、與 NH<sub>3</sub> 形成亞胺，之後接受質子和電子生成丙胺酸。產氫是競爭消耗電子的主要副反應，不是本研究的目標共產品。</li>
+            </ul>
+            <div class="note"><strong>缺陷工程的設計原則：</strong>不是追求最大空缺濃度，而是同時最佳化底物吸附、表面反應與載子傳輸；還要分清表面空缺與 bulk 缺陷各自的角色。</div>
+        </section>
+
+        <section id="performance">
+            <h2>5. 性能與實際樣品：活性可提升，真實塑膠仍受解聚影響</h2>
+            <table><thead><tr><th>測試</th><th>結果</th><th>判讀</th></tr></thead><tbody>
+                <tr><td>PLA，50°C、4 h</td><td>丙胺酸約 2.15 mmol g<sub>cat</sub><sup>−1</sup> h<sup>−1</sup></td><td>測試配方含 25 wt% 氨水、去氧水與 1 bar N<sub>2</sub>。</td></tr>
+                <tr><td>PLA，70°C、4 h</td><td>約 4.95 mmol g<sub>cat</sub><sup>−1</sup> h<sup>−1</sup></td><td>升溫增加解聚與傳質；PLA 約 60°C 的玻璃轉移行為可能有助氨水滲入，但作者將此視為合理解釋。</td></tr>
+                <tr><td>近室溫測試</td><td>30°C 可檢出反應，但仍有 PLA 未轉化</td><td>「可在近室溫發生」不等於近室溫下已達最高產率或完全轉化。</td></tr>
+                <tr><td>重複使用</td><td>五次循環後保有約 88% 活性</td><td>支持短期可回收再用；尚不足以代表長期連續操作。</td></tr>
+                <tr><td>商用 PLA 杯</td><td>杯片約 1.23；磨成 90–180 μm 粉末約 2.35 mmol g<sub>cat</sub><sup>−1</sup> h<sup>−1</sup>（70°C）</td><td>粒徑縮小提升轉化，顯示真實廢料的物理形態與添加物會影響結果。</td></tr>
+            </tbody></table>
+            <p>50°C 下反應前 4 小時的生成近線性，之後速率下降；作者將其與丙胺酸對乳酸轉化的抑制、可能的表面配位效應相連。以不同聚酯測試時，聚羥基丁酸酯、聚乙醇酸與聚己內酯的結果差異明顯，對應胺基酸產率偏低或未檢出，說明 PLA 上的成功不能直接代表所有聚酯都能高效胺化。</p>
+        </section>
+
+        <section id="limits">
+            <h2>6. 工程限制與研究判讀</h2>
+            <ul>
+                <li><strong>氨水管理：</strong>25 wt% 氨水同時參與鹼性解聚與供氮，需考量腐蝕性、揮發、回收與循環使用。降低氨耗或閉路回收是流程評估的關鍵。</li>
+                <li><strong>熱與光的能量帳：</strong>最高速率在 70°C 取得，且系統需去氧與可見光照射；應以實際吸收光通量、加熱能源、產物分離能耗作整體效率分析。</li>
+                <li><strong>鎘材料的環境安全：</strong>CdS 含鎘，進一步放大應檢驗鎘溶出、光腐蝕、催化劑回收率與含鎘廢液處置。循環測試的活性維持不能取代金屬浸出資料。</li>
+                <li><strong>反應器與產品回收：</strong>作者提出光反應器、膜蒸餾回收氨並濃縮、再結晶分離丙胺酸的概念流程；這是後續流程構想，並非已完成的整合式連續工廠示範。</li>
+                <li><strong>真實廢料品質：</strong>商用杯測試證明概念可延伸至實際商品，但仍需涵蓋不同 PLA 製品、色料、添加劑、污染物與混合塑膠，並建立碳收率及氮平衡。</li>
+            </ul>
+            <p>本研究的重要貢獻，是把硫空缺含量與吸附能力、載子傳輸及丙胺酸產率聯繫起來，並展示商用 PLA 轉化。工程化判斷則要把「室溫合成催化劑」「反應可在低溫發生」與「整體製程低能耗」視為不同命題，並納入氨回收和鎘安全。</p>
+        </section>
+
+        <section>
+            <h2>原始論文</h2>
+            <ol class="reference-list">
+                <li>Y. Wu, P. T. T. Nguyen, S. S. Wong et al., “Photocatalytic upcycling of polylactic acid to alanine by sulfur vacancy-rich cadmium sulfide,” <em>Nature Communications</em> 16, 846 (2025). <a href="https://doi.org/10.1038/s41467-025-55930-x" target="_blank" rel="noopener noreferrer">DOI: 10.1038/s41467-025-55930-x</a></li>
+            </ol>
+        </section>
+    </main>
+    <p class="footnote">本頁依原始論文整理。速率依論文所列反應條件與催化劑質量歸一化；不同底物、光源及反應器之間不宜直接比較。</p>
+</body>
+</html>
+
