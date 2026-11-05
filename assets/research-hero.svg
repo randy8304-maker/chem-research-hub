@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="title desc">
+  <title id="title">研究手帳主視覺</title><desc id="desc">光線照射奈米晶體，周圍以分子結構和研究圖表呈現化學材料研究。</desc>
+  <defs><linearGradient id="paper" x2="1" y2="1"><stop stop-color="#e9f0ec"/><stop offset="1" stop-color="#f6ead9"/></linearGradient><linearGradient id="beam" x2="0" y2="1"><stop stop-color="#e7b96e" stop-opacity=".8"/><stop offset="1" stop-color="#e7b96e" stop-opacity="0"/></linearGradient></defs>
+  <rect x="18" y="18" width="604" height="444" rx="34" fill="url(#paper)"/>
+  <circle cx="460" cy="130" r="62" fill="#f7e1ad"/><path d="M450 19 300 283h102L333 456l196-267H420z" fill="url(#beam)"/>
+  <path d="M84 324c52-79 95-79 144 0s94 79 145 0 92-79 145 0" fill="none" stroke="#6d8d7b" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 13"/>
+  <g fill="#5c768d" stroke="#fdfbf7" stroke-width="7"><circle cx="92" cy="320" r="27"/><circle cx="229" cy="320" r="27"/><circle cx="373" cy="320" r="27"/><circle cx="518" cy="320" r="27"/></g>
+  <g stroke="#5c768d" stroke-width="4" opacity=".72"><path d="m122 148 42-24 42 24v48l-42 24-42-24z"/><path d="m164 124 42 24m-84 0 42 24m0-48v48"/></g>
+  <g fill="#fff" stroke="#d8ded9" stroke-width="2"><rect x="67" y="385" width="210" height="44" rx="14"/><rect x="300" y="385" width="265" height="44" rx="14"/></g>
+  <path d="M88 407h38m10 0h45m10 0h55" stroke="#8aa394" stroke-width="6" stroke-linecap="round"/><path d="M323 412c21-22 39 15 59-5s37-22 54-2 38 11 60-9 35 14 48-1" fill="none" stroke="#c88d65" stroke-width="4" stroke-linecap="round"/>
+</svg>
+
