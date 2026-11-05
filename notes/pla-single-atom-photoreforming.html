@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="解析單原子 Ni/CdS 催化 PLA 廢塑膠無鹼光重整的前處理、反應機制、性能與放大限制。">
+    <title>單原子鎳促進 PLA 廢塑膠無鹼光重整 | ChemMate</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+    <style>
+        :root { --bg:#fdfbf7; --ink:#2c3e50; --muted:#65717a; --blue:#5c768d; --green:#688575; --line:#e5dfd4; --paper:#fff; --sand:#f3efe7; }
+        * { box-sizing:border-box; }
+        body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC",sans-serif; max-width:900px; padding:30px 22px 60px; margin-inline:auto; line-height:1.85; }
+        a { color:var(--blue); } .back-link { display:inline-block; margin:0 0 22px; font-weight:700; text-decoration:none; }
+        .eyebrow { color:var(--green); letter-spacing:.12em; font-size:.8rem; font-weight:700; text-transform:uppercase; }
+        h1 { margin:7px 0 10px; padding-bottom:15px; border-bottom:2px solid var(--line); font-size:clamp(1.8rem,4vw,2.45rem); line-height:1.35; }
+        .meta { color:#858b8c; font-size:.9rem; } .lede { color:var(--muted); font-size:1.08rem; }
+        .tags { display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 24px; } .tag { display:inline-block; background:#e9efeb; color:#4d6c5c; padding:3px 10px; border-radius:999px; font-size:.82rem; }
+        .summary { background:#fff; border:1px solid var(--line); border-left:5px solid var(--green); border-radius:10px; padding:18px 22px; margin:25px 0; }
+        .summary strong { display:block; margin-bottom:5px; } .summary p { margin:0; color:var(--muted); }
+        nav.toc { background:#f3f0e9; border-radius:10px; padding:16px 20px; margin:26px 0; } nav.toc strong { display:block; margin-bottom:6px; } nav.toc ul { margin:0; padding-left:1.2rem; columns:2; } nav.toc a { text-decoration:none; }
+        h2 { margin:38px 0 12px; padding-left:12px; border-left:4px solid var(--blue); color:#34495e; font-size:1.35rem; }
+        h3 { margin:23px 0 8px; font-size:1.08rem; } p { margin:10px 0 14px; } .formula-box { overflow-x:auto; text-align:center; background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:18px 12px; margin:18px 0; }
+        .note { background:#eef2ef; border-radius:8px; padding:13px 16px; color:#4d6258; margin:18px 0; }
+        table { width:100%; border-collapse:collapse; margin:18px 0 24px; background:#fff; font-size:.94rem; } th,td { border:1px solid var(--line); padding:11px 12px; text-align:left; vertical-align:top; } th { background:#edf1ee; color:#3e5b4e; }
+        .reference-list li { margin:9px 0; overflow-wrap:anywhere; } .footnote { color:#858b8c; font-size:.88rem; border-top:1px solid var(--line); margin-top:36px; padding-top:18px; }
+        @media(max-width:650px) { body { padding:22px 16px 42px; } nav.toc ul { columns:1; } table { display:block; overflow-x:auto; white-space:normal; } }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-link">← 回到研究手帳</a>
+    <header>
+        <div class="eyebrow">Photocatalysis · Polymer Upcycling</div>
+        <h1>單原子鎳促進聚乳酸廢塑膠無鹼光重整</h1>
+        <div class="meta">研究筆記｜整理日期：2026-11-06｜原文線上刊登：2025-12-03</div>
+        <p class="lede">研究以硫配位的單原子 Ni 修飾 CdS，將熱水預水解後的 PLA 廢料轉成氫氣與丙酮酸。單原子位點同時改變載子傳輸與乳酸的表面反應路徑，提升產率並降低副反應。</p>
+        <div class="tags"><span class="tag">PLA 資源化</span><span class="tag">Ni 單原子</span><span class="tag">CdS 光催化劑</span><span class="tag">氫氣 / 丙酮酸</span></div>
+    </header>
+    <aside class="summary"><strong>研究摘要</strong><p>本文的「無鹼」指前水解不添加鹼或其他催化添加物；作者仍以熱水在 150°C 下處理 PLA 10 小時，使其水解為乳酸，再進行光重整。最佳 Ni 含量約 0.79% 的 Ni/CdS，在模擬太陽光下達到 H<sub>2</sub> 3.93、丙酮酸 3.66 mmol g<sub>cat</sub><sup>−1</sup> h<sup>−1</sup>。研究並展示 12 天戶外連續流操作，但這仍是需要進一步評估前處理能耗、鎘安全與產物分離的原型流程。</p></aside>
+    <nav class="toc" aria-label="目錄"><strong>閱讀導覽</strong><ul><li><a href="#question">問題與研究設計</a></li><li><a href="#process">材料與反應流程</a></li><li><a href="#mechanism">單原子位點機制</a></li><li><a href="#results">主要結果與量測</a></li><li><a href="#scale">戶外放大與限制</a></li><li><a href="#takeaway">研究判讀</a></li></ul></nav>
+
+    <main>
+        <section id="question">
+            <h2>1. 研究問題：如何兼顧 PLA 轉化速率與丙酮酸選擇性？</h2>
+            <p>聚乳酸（PLA）常被視為可堆肥塑膠，但自然環境中的降解可能緩慢且不完全；材料碎裂也不等同於完全礦化。光重整提供另一種資源化思路：先將聚合物轉成小分子，再利用光生載子將有機底物氧化，並耦合質子還原產氫。</p>
+            <p>本研究聚焦乳酸（LA）的選擇性脫氫。既有 CdS 可吸光並提供合適能帶，但單獨 CdS 對乳酸 α-OH 與 α-C–H 的活化及氫析出能力有限，容易造成反應慢、產物選擇性不足。作者因此在 CdS 表面引入硫配位的 Ni 單原子，希望同時提供電子捕獲／轉移位點與底物反應位點。</p>
+            <div class="note"><strong>概念界線：</strong>「無鹼光重整」不等於免前處理。這項工作把鹼處理改成熱水預水解，省去鹼與後續鹽類中和問題，但前水解仍需 150°C、10 小時；評估整體流程時，這段熱量必須計入。</div>
+        </section>
+
+        <section id="process">
+            <h2>2. 材料與流程：熱水解聚，接續光催化脫氫</h2>
+            <h3>兩段式反應鏈</h3>
+            <ol>
+                <li><strong>PLA 預水解：</strong>作者以水作介質，在密閉反應器中於 150°C 處理 10 小時；實驗室程序以 3 g PLA 加 30 mL 去離子水為例。尺寸排阻分析顯示，預處理液中未檢出短鏈 PLA 寡聚物，研究將其判定為已轉成乳酸。</li>
+                <li><strong>乳酸光重整：</strong>加入 Ni/CdS 光催化劑並照光，乳酸脫氫形成丙酮酸；釋出的質子／氫物種在電子作用下生成 H<sub>2</sub>。氣相與液相產物分別收集分析。</li>
+            </ol>
+            <p>整體反應可用下式作為簡化的原子平衡表示：</p>
+            <div class="formula-box">$$\mathrm{C_3H_6O_3\ (lactic\ acid)} \rightarrow \mathrm{C_3H_4O_3\ (pyruvic\ acid)} + \mathrm{H_2}$$</div>
+            <p>這個方程式呈現乳酸脫去兩個氫原子後形成丙酮酸的總體變化，不代表所有表面基元步驟都已簡化為單一步驟。</p>
+            <h3>催化劑結構與製備</h3>
+            <p>CdS 奈米晶以水熱法製備；Ni 透過浸漬與煅燒固定於 CdS 表面。HAADF-STEM、元素映射、XANES 與 EXAFS 等結果支持 Ni 以孤立原子形式存在，主要與周圍 S 配位；作者未觀察到 Ni–Ni 配位訊號，並提出部分表面 Cd 位點被 Ni 取代的結構模型。這些證據比單靠 XRD「沒有 Ni 顆粒峰」更能支持單原子判定。</p>
+        </section>
+
+        <section id="mechanism">
+            <h2>3. 反應機制：Ni 位點把電子轉移與底物選擇性連起來</h2>
+            <p>照光後，CdS 產生電子與電洞；研究提出 Ni 單原子可接收 CdS 導帶電子，形成局部富電子區域並改變表面電荷分布。光致發光、光電化學阻抗、瞬態光電流與飛秒瞬態吸收等結果共同支持 Ni/CdS 的電荷轉移行為有所改變。</p>
+            <p>在底物端，DFT 計算顯示乳酸較有利於吸附在 Ni 鄰近的 S 位點，並由 α-OH 配位促進後續反應。原位 DRIFTS、EPR 與計算提出的主路徑為：</p>
+            <ol>
+                <li>乳酸 α-OH 去質子化，形成氧中心自由基中間體。</li>
+                <li>接續移除 α 碳上的氫，形成丙酮酸；Ni 位點使此選擇性路徑的能量障礙降低。</li>
+                <li>由有機底物釋出的質子／氫物種在光生電子參與下形成氫氣；單原子位點也有助於質子吸附與脫附。</li>
+            </ol>
+            <div class="note"><strong>瞬態吸收的細節：</strong>文章報告 500 nm 電子吸收訊號的擬合衰減時間由 CdS 的 126 ps 變成 Ni/CdS 的 106 ps，作者將其解讀為電子更快轉移至 Ni 位點；另在 650 nm 的受激放射訊號中，Ni/CdS 的擬合時間較長。不同訊號代表不同動力學分量，不能把所有「時間變長／變短」都直接稱為載子壽命增加。</div>
+        </section>
+
+        <section id="results">
+            <h2>4. 主要結果：Ni 含量存在最佳值，產物生成近乎配對</h2>
+            <table><thead><tr><th>項目</th><th>論文報告</th><th>解讀</th></tr></thead><tbody>
+                <tr><td>最佳 Ni 含量</td><td>約 0.79%</td><td>低負載不足以提供足夠位點；再增加 Ni 後活性下降，呈火山型趨勢。</td></tr>
+                <tr><td>H<sub>2</sub> 生成速率</td><td>3.93 mmol g<sub>cat</sub><sup>−1</sup> h<sup>−1</sup></td><td>以預水解 PLA 液作底物；需連同光強與催化劑負載理解。</td></tr>
+                <tr><td>丙酮酸生成速率</td><td>3.66 mmol g<sub>cat</sub><sup>−1</sup> h<sup>−1</sup></td><td>與 H<sub>2</sub> 生成接近，支持脫氫反應的耦合關係。</td></tr>
+                <tr><td>波長解析表觀量子效率</td><td>400 nm 下 H<sub>2</sub> 25.9%、丙酮酸 24.2%</td><td>此值依單色光與量測定義而定，不等同於戶外總能量效率。</td></tr>
+                <tr><td>循環穩定性</td><td>六次循環未見明顯活性衰退；反應後催化劑質量損失約 0.16%</td><td>支持短期重複使用，但仍需更長時間、更多批次及金屬浸出監測。</td></tr>
+            </tbody></table>
+            <p>主要分析包括以 GC-TCD 定量氫氣、以 <sup>1</sup>H NMR 分析液相產物，並搭配 XRD、顯微分析、XPS、XAS、EIS、瞬態光譜及原位光譜研究材料結構和反應路徑。最佳條件的實驗採 AM 1.5G 濾光氙燈，光強 150 mW cm<sup>−2</sup>，30 mg 催化劑分散於 30 mL、10% 預水解 PLA 溶液中；比較速率時不可省略這些條件。</p>
+        </section>
+
+        <section id="scale">
+            <h2>5. 戶外連續流與放大限制</h2>
+            <p>作者把預水解、固定化催化劑與平板式連續流反應器串接，並在戶外日照下操作 12 天。每日產率會隨日照變動，但持續觀察到氫氣與丙酮酸生成，兩者莫耳比約為 1:1。這比單次批次實驗更接近工程流程驗證，但仍應視為原型規模的連續操作示範。</p>
+            <ul>
+                <li><strong>熱水前處理的能源帳：</strong>「無鹼」降低了鹼試劑與鹽類處理負擔，但熱水解聚仍需供熱；需量化太陽熱收集效率、保溫、停留時間與單位 PLA 能耗。</li>
+                <li><strong>CdS 的安全與回收：</strong>CdS 含鎘，放大前需驗證光腐蝕、鎘溶出、催化劑脫落、回收率及廢液處理。短期質量損失數據不能取代長期毒性與浸出評估。</li>
+                <li><strong>產品純化：</strong>丙酮酸以水溶液形式得到，後段濃縮與分離能耗可能影響整體經濟性；氫氣也需確認純度及氣液分離效率。</li>
+                <li><strong>真實廢料適用性：</strong>需進一步測試不同 PLA 製品中的色料、填料、添加劑、污染物及混合塑膠，並建立對應的碳平衡與物料回收率。</li>
+                <li><strong>量子效率與戶外表現：</strong>單色光 AQE、模擬太陽光活性與戶外面積產率是不同指標，需分開報告，不宜直接互換。</li>
+            </ul>
+        </section>
+
+        <section id="takeaway">
+            <h2>6. 研究判讀與結論</h2>
+            <p>這篇研究的設計重點是讓單一原子位點同時協助光生電子轉移、乳酸 α-OH/Cα–H 活化與質子還原，從而把 PLA 衍生乳酸導向丙酮酸與氫氣。其說服力來自材料結構證據、原位反應觀察、計算與產物分析彼此支持，並延伸至戶外連續流。</p>
+            <p>評估工程價值時，應把「不需鹼」與「低能耗」分開：這條路徑減少鹼處理，但仍有高溫水解、CdS 管理與液相產品分離等成本。下一階段關鍵將是降低預處理熱需求、提高催化劑安全回收，並以完整能量／碳平衡驗證整體流程。</p>
+        </section>
+
+        <section>
+            <h2>原始論文</h2>
+            <ol class="reference-list">
+                <li>M. Hu et al., “Isolated Ni atoms enable alkali-free photoreforming of waste polylactic acid plastic,” <em>Nature Communications</em> 17, 347 (2026), first published online 3 December 2025. <a href="https://doi.org/10.1038/s41467-025-67050-7" target="_blank" rel="noopener noreferrer">DOI: 10.1038/s41467-025-67050-7</a></li>
+            </ol>
+        </section>
+    </main>
+    <p class="footnote">本頁依原始論文整理。摘要中的性能數據皆對應文中所述催化劑、預處理、照光與反應條件；研究結果不應直接外推至其他聚合物或商業化裝置。</p>
+</body>
+</html>
+
