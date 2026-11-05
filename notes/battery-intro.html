@@ -21,11 +21,11 @@
         .summary strong { display:block; margin-bottom:5px; } .summary p { margin:0; color:var(--muted); }
         nav.toc { background:#f3f0e9; border-radius:10px; padding:16px 20px; margin:26px 0; } nav.toc strong { display:block; margin-bottom:6px; } nav.toc ul { margin:0; padding-left:1.2rem; columns:2; } nav.toc a { text-decoration:none; }
         h2 { margin:38px 0 12px; padding-left:12px; border-left:4px solid var(--blue); color:#34495e; font-size:1.35rem; }
-        h3 { margin:23px 0 8px; font-size:1.08rem; } p { margin:10px 0 14px; } .formula-box { overflow-x:auto; text-align:center; background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:18px 12px; margin:18px 0; }
+        h3 { margin:23px 0 8px; font-size:1.08rem; } p { margin:10px 0 14px; } .diagram { margin:24px 0 30px; background:#fff; border:1px solid var(--line); border-radius:13px; overflow:hidden; } .diagram img { display:block; width:100%; height:auto; } .diagram figcaption { padding:12px 16px; color:var(--muted); font-size:.9rem; border-top:1px solid var(--line); } .formula-box { overflow-x:auto; text-align:center; background:var(--paper); border:1px solid var(--line); border-radius:9px; padding:18px 12px; margin:18px 0; }
         .note { background:#eef2ef; border-radius:8px; padding:13px 16px; color:#4d6258; margin:18px 0; }
         table { width:100%; border-collapse:collapse; margin:18px 0 24px; background:#fff; font-size:.94rem; } th,td { border:1px solid var(--line); padding:11px 12px; text-align:left; vertical-align:top; } th { background:#edf1ee; color:#3e5b4e; }
         .reference-list li { margin:9px 0; overflow-wrap:anywhere; } .footnote { color:#858b8c; font-size:.88rem; border-top:1px solid var(--line); margin-top:36px; padding-top:18px; }
-        @media(max-width:650px) { body { padding:22px 16px 42px; } nav.toc ul { columns:1; } table { display:block; overflow-x:auto; white-space:normal; } }
+        @media(max-width:650px) { body { padding:22px 16px 42px; } nav.toc ul { columns:1; } table { display:block; overflow-x:auto; white-space:normal; } .diagram { overflow-x:auto; } .diagram img { width:720px; max-width:none; } }
     </style>
 </head>
 <body>
@@ -38,6 +38,7 @@
         <div class="tags"><span class="tag">SEI / CEI</span><span class="tag">Butler–Volmer</span><span class="tag">EIS</span><span class="tag">矽基負極</span></div>
     </header>
     <aside class="summary"><strong>本篇摘要</strong><p>以電極—電解液界面為主線，說明 SEI 與 CEI 的形成意義、矽負極的膨脹與失效連鎖、Butler–Volmer 方程式及 EIS 的常見頻段訊號。阻抗圖形需要結合狀態、溫度、電極結構與等效電路檢查，不能將單一半圓直接等同於某一個材料性質。</p></aside>
+    <figure class="diagram"><img src="../assets/battery-interface-pathway.svg" alt="鋰離子在正負極之間穿越電解液與 SEI，電子則沿外部電路移動的示意圖"><figcaption>圖 1｜電池內部以 Li⁺ 傳輸與界面電荷轉移為主，電子經外部電路完成迴路。理想 SEI 需兼顧電子阻隔與鋰離子導通；圖示為概念示意，不代表特定電池的微觀結構。</figcaption></figure>
     <nav class="toc" aria-label="目錄"><strong>閱讀導覽</strong><ul><li><a href="#context">電池與介面角色</a></li><li><a href="#materials">高容量材料的取捨</a></li><li><a href="#kinetics">界面動力學</a></li><li><a href="#eis">EIS 判讀框架</a></li><li><a href="#workflow">研究與驗證流程</a></li><li><a href="#design">設計策略與結論</a></li></ul></nav>
 
     <main>
@@ -45,6 +46,7 @@
             <h2>1. 研究背景：界面是反應與傳輸的交會處</h2>
             <p>鋰離子電池充電時，鋰離子由正極脫出，穿過電解液並嵌入負極；放電時方向相反。電子則經由外部電路移動。實際電池表現受多個串聯步驟限制，包括電解液中的離子傳輸、界面電荷轉移、固相擴散，以及電子導電網路與集流體接觸。</p>
             <p>負極電位較低，電解液可能在初次充電時還原並形成<strong>固體電解質界面膜（SEI, solid electrolyte interphase）</strong>。理想 SEI 能阻擋電子繼續流向電解液，同時允許 Li<sup>+</sup> 通過，因此可鈍化表面、降低後續副反應。正極高電位下形成或改變的界面層常稱為<strong>正極電解質界面膜（CEI, cathode electrolyte interphase）</strong>。兩者的化學組成、形成電位與失效模式並不相同。</p>
+            <p>可將電池的速率限制拆成一條串聯的傳輸鏈：電解液中的離子遷移、跨越 SEI/CEI 的去溶劑化與傳輸、界面氧化還原，以及活性顆粒內的固態擴散。任一環節變慢，都可能呈現為極化加大或倍率容量下降；因此，改善界面阻抗不一定能補償顆粒內擴散或電子網路的瓶頸。</p>
             <div class="note"><strong>界面穩定的兩面性：</strong>界面膜需要足夠緻密以減少持續分解，又必須薄且具離子導通性；過厚或不均勻會增加阻抗，反覆破裂則會暴露新表面並消耗可循環鋰與電解液。</div>
         </section>
 
@@ -77,6 +79,9 @@
                 <tr><td>低頻斜線或尾端</td><td>有限／半無限擴散、濃度極化與幾何效應</td><td>頻率範圍是否足夠？是否符合所用 Warburg 模型假設？</td></tr>
             </tbody></table>
             <div class="note"><strong>避免過度解讀：</strong>一個 Nyquist 半圓不必然只代表 SEI 或只代表電荷轉移。不同過程可能重疊；等效電路只是對資料的模型化，不是直接拍到的實體結構。最好報告電池狀態（SOC）、溫度、靜置時間、擾動振幅、頻率範圍、擬合電路與殘差，並搭配循環、倍率、GITT/PITT、XPS 或顯微分析交叉判斷。</div>
+            <h3>讓阻抗判讀可重現的量測檢查</h3>
+            <p>進行 EIS 前應讓電池在指定 SOC 與溫度下充分靜置，使用小振幅交流訊號確認近似線性響應，並檢查測量期間系統是否穩定。高頻端可能受導線電感與夾具影響；若高頻截距漂移，先排查接點和儀器設定，再討論材料差異。不同循環狀態的譜圖必須用相同頻率範圍、振幅及電池預處理方式取得。</p>
+            <p>擬合時應比較合理的候選電路、檢查殘差與參數信賴區間；若兩個時間常數高度重疊，單次 EIS 通常無法唯一分離其物理來源。可透過溫度依賴、SOC 依賴或對稱電池等設計增加可辨識性，再由 XPS、截面顯微或循環後電極分析提供獨立證據。</p>
         </section>
 
         <section id="workflow">
@@ -112,3 +117,4 @@
     <p class="footnote">本頁為研究導讀與機制整理，不代表特定電池的測試結果。方程式與阻抗模型的適用範圍應依材料系統、SOC、溫度與量測設計確認。</p>
 </body>
 </html>
+
