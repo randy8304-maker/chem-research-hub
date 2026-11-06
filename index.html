@@ -18,6 +18,8 @@
         .eyebrow { color:var(--green); font-size:.82rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
         h1 { margin:8px 0 10px; color:var(--blue); font-size:clamp(2rem,5vw,3rem); line-height:1.2; }
         .hero p { max-width:680px; margin:0; color:var(--muted); font-size:1.08rem; }
+        .byline { margin-top:13px !important; color:#536b60 !important; font-size:.94rem !important; font-weight:700; letter-spacing:.04em; }
+        .byline span { display:inline-block; margin-left:5px; padding:3px 10px; background:#e9efeb; border-radius:999px; }
         .topic-row { display:flex; flex-wrap:wrap; gap:9px; margin-top:24px; }
         .topic { background:#e9efeb; color:#4b6b5c; padding:5px 12px; border-radius:999px; font-size:.86rem; }
         main { padding:42px 0 68px; }
@@ -42,7 +44,7 @@
         .pillar-copy p { margin:0; color:var(--muted); font-size:.9rem; }
         .section-heading { margin:0 0 18px; padding-left:12px; border-left:4px solid var(--blue); font-size:1.45rem; }
         .post-card { display:grid; grid-template-columns:220px 1fr; gap:24px; padding:18px; margin-bottom:18px; transition:transform .2s ease,box-shadow .2s ease; }
-        .post-image { width:100%; height:100%; min-height:190px; object-fit:cover; border-radius:11px; background:#edf0f4; }
+        .post-image { width:100%; height:auto; max-height:190px; align-self:center; object-fit:contain; border-radius:11px; background:#edf0f4; }
         .post-content { padding:3px 6px 4px 0; }
         .post-card:hover { transform:translateY(-2px); box-shadow:0 10px 26px rgba(57,64,69,.08); }
         .card-top { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:8px; }
@@ -71,6 +73,7 @@
                     <div class="eyebrow">ChemMate · Research Notes</div>
                     <h1>把化學研究，整理成看得懂的知識地圖。</h1>
                     <p>從材料設計、反應機制到量測證據，逐篇梳理化學與材料工程研究，讓重要結論有脈絡、有限制，也能回到原始文獻查證。</p>
+                    <p class="byline">作者 <span>Harrison Lee</span></p>
                     <div class="topic-row" aria-label="研究主題"><span class="topic">電化學與界面</span><span class="topic">鋰離子電池</span><span class="topic">光催化塑膠回收</span><span class="topic">綠色化工</span></div>
                 </div>
                 <img class="hero-art" src="assets/research-hero.svg" alt="光線照射奈米晶體，並以分子結構與研究圖表呈現化學材料研究">
@@ -96,16 +99,16 @@
         <section aria-labelledby="pillars-heading">
             <h2 id="pillars-heading" class="section-heading">研究主題一覽</h2>
             <div class="pillars">
-                <article class="pillar-card"><img src="assets/topic-photocatalysis.svg" alt="光催化劑在光照下將聚合物鏈轉化為小分子"><div class="pillar-copy"><h3>光催化與塑膠資源化</h3><p>追蹤光生載子、催化位點與塑膠轉化產物。</p></div></article>
-                <article class="pillar-card"><img src="assets/topic-battery.svg" alt="鋰離子在電池正負極與界面間移動"><div class="pillar-copy"><h3>電池材料與電化學</h3><p>連結電極界面、離子傳輸、阻抗與循環表現。</p></div></article>
-                <article class="pillar-card"><img src="assets/topic-materials.svg" alt="材料晶格中的催化位點與空缺缺陷示意"><div class="pillar-copy"><h3>材料結構與催化位點</h3><p>從缺陷、表面化學及材料表徵理解活性來源。</p></div></article>
+                <article class="pillar-card"><img src="assets/photocatalytic-plastic-pathway.svg" alt="PET 水解與 PE 氧化前處理後，分別進入半導體光催化的示意圖"><div class="pillar-copy"><h3>光催化與塑膠資源化</h3><p>PET 以酯鍵水解接入反應；PE 則需先氧化處理，再追蹤有機物氧化與產氫。</p></div></article>
+                <article class="pillar-card"><img src="assets/battery-interface-pathway.svg" alt="鋰離子穿越電池界面並於外部電路形成電子傳輸迴路"><div class="pillar-copy"><h3>電池材料與電化學</h3><p>由 Li⁺ 傳輸、SEI 界面與電子迴路理解阻抗及循環表現。</p></div></article>
+                <article class="pillar-card"><img src="assets/topic-catalyst-sites.svg" alt="Ni 單原子 CdS 與硫空缺 CdS 兩種不同催化位點設計及各自產物的比較"><div class="pillar-copy"><h3>單原子與缺陷位點</h3><p>比較 Ni 單原子光重整與硫空缺促進胺化兩條不同的 CdS 設計路徑。</p></div></article>
             </div>
         </section>
         <section aria-labelledby="latest-heading">
             <h2 id="latest-heading" class="section-heading">最新研究筆記</h2>
             <div id="article-list">
                 <article class="post-card">
-                    <img class="post-image" src="assets/topic-materials.svg" alt="CdS 晶格與硫空缺位點示意">
+                    <img class="post-image" src="assets/pla-sulfur-vacancy-alanine-pathway.svg" alt="PLA 在氨水中解聚後，經硫空缺 CdS 光催化生成丙胺酸的反應流程">
                     <div class="post-content">
                     <div class="card-top"><span class="post-date">2026-11-06 · 光催化與塑膠資源化</span><span class="reading-time">約 10 分鐘</span></div>
                     <div class="tags"><span class="tag">PLA</span><span class="tag">硫空缺 CdS</span><span class="tag">丙胺酸</span></div>
@@ -116,7 +119,7 @@
                     </div>
                 </article>
                 <article class="post-card">
-                    <img class="post-image" src="assets/topic-photocatalysis.svg" alt="光照驅動 PLA 光催化轉化示意">
+                    <img class="post-image" src="assets/pla-nickel-single-atom-pathway.svg" alt="PLA 熱水預水解成乳酸後，由 Ni 單原子 CdS 光催化生成丙酮酸與氫氣">
                     <div class="post-content">
                     <div class="card-top"><span class="post-date">2026-11-06 · 光催化與塑膠資源化</span><span class="reading-time">約 9 分鐘</span></div>
                     <div class="tags"><span class="tag">PLA</span><span class="tag">Ni 單原子 / CdS</span><span class="tag">氫氣 / 丙酮酸</span></div>
@@ -127,7 +130,7 @@
                     </div>
                 </article>
                 <article class="post-card">
-                    <img class="post-image" src="assets/topic-photocatalysis.svg" alt="光催化劑將塑膠聚合物轉化為化學品示意">
+                    <img class="post-image" src="assets/photocatalytic-plastic-pathway.svg" alt="PET 與 PE 依聚合物結構使用不同前處理後接入光重整的反應示意">
                     <div class="post-content">
                     <div class="card-top"><span class="post-date">2026-11-06 · 光催化與資源循環</span><span class="reading-time">約 8 分鐘</span></div>
                     <div class="tags"><span class="tag">光催化</span><span class="tag">PET / PE</span><span class="tag">綠色氫氣</span></div>
@@ -138,7 +141,7 @@
                     </div>
                 </article>
                 <article class="post-card">
-                    <img class="post-image" src="assets/topic-battery.svg" alt="鋰離子穿越電池電極界面的示意">
+                    <img class="post-image" src="assets/battery-interface-pathway.svg" alt="鋰離子穿越 SEI 與電解液、電子沿外部電路傳輸的電池界面示意">
                     <div class="post-content">
                     <div class="card-top"><span class="post-date">2026-11-06 · 電池材料與電化學</span><span class="reading-time">約 9 分鐘</span></div>
                     <div class="tags"><span class="tag">鋰離子電池</span><span class="tag">SEI / CEI</span><span class="tag">EIS</span></div>
